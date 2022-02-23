@@ -52,7 +52,7 @@
 
   시작점을 의미한다. 뷰 인스턴스로 화면을 렌더링 할 때 화면이 그려질 위치의 돔 요소를 지정해 주어야 한다.
 
-  ![인스턴스의 el속성](/Users/xxbro/bro-lab/vuejs/markdown/img/1.jpeg)
+  ![인스턴스의 el속성](../img/1.jpeg)
 
   이 외에도 template, methods, created 등 미리 정의되어 있는 속성을 사용할 수 있다.
 
