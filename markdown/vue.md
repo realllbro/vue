@@ -52,7 +52,7 @@
 
   시작점을 의미한다. 뷰 인스턴스로 화면을 렌더링 할 때 화면이 그려질 위치의 돔 요소를 지정해 주어야 한다.
 
-  ![인스턴스의 el속성](../img/1.jpeg)
+  ![인스턴스의 el속성](./img/1.jpeg)
 
   이 외에도 template, methods, created 등 미리 정의되어 있는 속성을 사용할 수 있다.
 
@@ -72,7 +72,7 @@
 
   화면에 인스턴스 옵션 속성을 적용하는 과정은 다음과 같다.
 
-  <img src="/Users/xxbro/bro-lab/vuejs/markdown/img/2.jpeg" alt="2" style="zoom:50%;" />
+  <img src="./img/2.jpeg" alt="2" style="zoom:50%;" />
 
   <<샘플코드>>
 
@@ -89,13 +89,13 @@
 
   그리고 브라우저에서 위 샘플코드를 실행하면 아래와 같이 el 속성에 지정한 화면요소(돔)에 인스턴스가 부착된다.
 
-  <img src="/Users/xxbro/bro-lab/vuejs/markdown/img/3.jpeg" alt="3" style="zoom:50%;" />
+  <img src="./img/3.jpeg" alt="3" style="zoom:50%;" />
 
   el 속성에 인스턴스가 부착되고 나면 인스턴스에 정의한 옵션 객체의 내용(data속성)이 el 속성에 지정한 화면요소와
 
   그 이하 레벨의 화면 요소에 적용되어 값이 치환된다.
 
-  <img src="/Users/xxbro/bro-lab/vuejs/markdown/img/4.jpeg" alt="4" style="zoom:50%;" />
+  <img src="./img/4.jpeg" alt="4" style="zoom:50%;" />
 
   data 속성의 message 값 Hello Vue.js! 가 {{ message }}와 치환된다.
 
@@ -112,11 +112,11 @@
 
   위 코드를 실행하면 결과는 아래 와 같다.
 
-  <img src="/Users/xxbro/bro-lab/vuejs/markdown/img/5.jpeg" alt="5" style="zoom:50%;" />
+  <img src="./img/5.jpeg" alt="5" style="zoom:50%;" />
 
   message 속성의 값이 Hello Vue.js! 로 바뀌지 않고 그대로 출력되는 이유는 인스턴스의 유효 범위 때문이다.
 
-  <img src="/Users/xxbro/bro-lab/vuejs/markdown/img/6.jpeg" alt="6" style="zoom:50%;" />
+  <img src="./img/6.jpeg" alt="6" style="zoom:50%;" />
 
   현재 코드에서 인스턴스의 유효 범위는 el 속성으로 지정한 <div =id="app"> 태그 아래에 오는 요소들로 제한된다.
 
@@ -136,7 +136,7 @@
 
     관련되어 총 8개가 있다.
 
-    <img src="/Users/xxbro/bro-lab/vuejs/markdown/img/7.jpeg" alt="7" style="zoom:50%;" />
+    <img src="./img/7.jpeg" alt="7" style="zoom:50%;" />
 
     위 그림은 인스턴스가 생성되고 나서 화면에 부착된 후 소멸되기 까지의 전체적인 흐름을 나타낸 뷰 인스턴스 라이프
 
@@ -301,7 +301,7 @@
     
     * 실행결과
     
-      ![8](/Users/xxbro/bro-lab/vuejs/markdown/img/8.png)
+      ![8](./img/8.png)
     
       도해의 흐름대로 beforeCreate, created, mounted가 표시되는 것을 확인할 수 있다.
     
@@ -347,7 +347,7 @@
     
     * 실행결과
     
-      ![9](/Users/xxbro/bro-lab/vuejs/markdown/img/9.png)
+      ![9](./img/9.png)
     
     * mounted 단계에서 화면에 표시되는 message값이 갱신 되었고, 이에 따라 updated 로그가 출력 되었다.
     
