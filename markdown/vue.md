@@ -52,7 +52,7 @@
 
   시작점을 의미한다. 뷰 인스턴스로 화면을 렌더링 할 때 화면이 그려질 위치의 돔 요소를 지정해 주어야 한다.
 
-  ![인스턴스의 el속성](/Users/xxbro/bro-lab/vuejs/markdown/img/1.jpeg)
+  ![인스턴스의 el속성](./img/1.jpeg)
 
   이 외에도 template, methods, created 등 미리 정의되어 있는 속성을 사용할 수 있다.
 
@@ -66,13 +66,13 @@
 
 * 뷰 인스턴스의 유효 범위
 
-  뷰 인스턴스를 생성하면 HTML의 특정 범위 안에서만 옵션 속성들이 적용되어 나타난다.. 
+  뷰 인스턴스를 생성하면 HTML의 특정 범위 안에서만 옵션 속성들이 적용되어 나타난다. 
 
-  이를 인스턴스의 유효범위 라고 합니다. 인스턴스의 유효 범위는 el속성과 밀접한 관계가 있다.
+  이를 인스턴스의 유효범위 라고 한다. 인스턴스의 유효 범위는 el속성과 밀접한 관계가 있다.
 
   화면에 인스턴스 옵션 속성을 적용하는 과정은 다음과 같다.
 
-  <img src="/Users/xxbro/bro-lab/vuejs/markdown/img/2.jpeg" alt="2" style="zoom:50%;" />
+  <img src="./img/2.jpeg" alt="2" style="zoom:50%;" />
 
   <<샘플코드>>
 
@@ -89,13 +89,13 @@
 
   그리고 브라우저에서 위 샘플코드를 실행하면 아래와 같이 el 속성에 지정한 화면요소(돔)에 인스턴스가 부착된다.
 
-  <img src="/Users/xxbro/bro-lab/vuejs/markdown/img/3.jpeg" alt="3" style="zoom:50%;" />
+  <img src="./img/3.jpeg" alt="3" style="zoom:50%;" />
 
   el 속성에 인스턴스가 부착되고 나면 인스턴스에 정의한 옵션 객체의 내용(data속성)이 el 속성에 지정한 화면요소와
 
   그 이하 레벨의 화면 요소에 적용되어 값이 치환된다.
 
-  <img src="/Users/xxbro/bro-lab/vuejs/markdown/img/4.jpeg" alt="4" style="zoom:50%;" />
+  <img src="./img/4.jpeg" alt="4" style="zoom:50%;" />
 
   data 속성의 message 값 Hello Vue.js! 가 {{ message }}와 치환된다.
 
@@ -112,11 +112,11 @@
 
   위 코드를 실행하면 결과는 아래 와 같다.
 
-  <img src="/Users/xxbro/bro-lab/vuejs/markdown/img/5.jpeg" alt="5" style="zoom:50%;" />
+  <img src="./img/5.jpeg" alt="5" style="zoom:50%;" />
 
   message 속성의 값이 Hello Vue.js! 로 바뀌지 않고 그대로 출력되는 이유는 인스턴스의 유효 범위 때문이다.
 
-  <img src="/Users/xxbro/bro-lab/vuejs/markdown/img/6.jpeg" alt="6" style="zoom:50%;" />
+  <img src="./img/6.jpeg" alt="6" style="zoom:50%;" />
 
   현재 코드에서 인스턴스의 유효 범위는 el 속성으로 지정한 <div =id="app"> 태그 아래에 오는 요소들로 제한된다.
 
@@ -136,7 +136,7 @@
 
     관련되어 총 8개가 있다.
 
-    <img src="/Users/xxbro/bro-lab/vuejs/markdown/img/7.jpeg" alt="7" style="zoom:50%;" />
+    <img src="./img/7.jpeg" alt="7" style="zoom:50%;" />
 
     위 그림은 인스턴스가 생성되고 나서 화면에 부착된 후 소멸되기 까지의 전체적인 흐름을 나타낸 뷰 인스턴스 라이프
 
@@ -262,7 +262,7 @@
     
       
     
-    * 라이프 사이클 실습 예제
+    * 01_라이프 사이클 실습 예제
     
       ```html
       <html>
@@ -301,13 +301,13 @@
     
     * 실행결과
     
-      ![8](/Users/xxbro/bro-lab/vuejs/markdown/img/8.png)
+      ![8](./img/8.png)
     
       도해의 흐름대로 beforeCreate, created, mounted가 표시되는 것을 확인할 수 있다.
     
       
     
-    * message값을 변경한 라이프 사이클 실습 예제
+    * 02_message값을 변경한 라이프 사이클 실습 예제
     
       ```html
       <html>
@@ -347,7 +347,7 @@
     
     * 실행결과
     
-      ![9](/Users/xxbro/bro-lab/vuejs/markdown/img/9.png)
+      ![9](./img/9.png)
     
     * mounted 단계에서 화면에 표시되는 message값이 갱신 되었고, 이에 따라 updated 로그가 출력 되었다.
     
@@ -361,7 +361,702 @@
   
   ## 뷰 컴포넌트
   
+  * 컴포넌트란 ?
   
+    컴포넌트(Component)란 조합하여 화면을 구성할 수 있는 블록(화면의 특정 영역)을 의미 한다.
   
+    컴포넌트를 활용하면 화면을 빠르게 구조화하여 일괄적인 패턴으로 개발 할 수 있다.
+  
+    화면 영역을 컴포넌트로 쪼개서 재활용할 수 있는 형태로 관리하면 나중에 코드를 다시 사용하기가 훨씬 편리하다.
+  
+    또한 모든 사람들이 정해진 방식대로 컴포넌트를 등록하거나 사용하게 되므로 남이 작성한 코드를 직관적으로 이해할 수 
+  
+    있다. 
+  
+    뷰에서는 웹 화면을 구성할 때 흔히 사용하는 내비게이션 바(navigation bar), 테이블(table), 리스트(list), 인풋 
+  
+    박스(input box) 등과 같은 화면 구성 요소들을 잘게 쪼개어 컴포넌트로 관리 한다.
+  
+    
+  
+  * 컴포넌트를 등록하는 방법은 전역과 지역 두 가지가 있다. 
+  
+    지역 컴포넌트는 특정 인스턴스에서만 유효한 범위를 갖고, 전역 컴포넌트는 여러 인스턴스에서 공통으로 사용할 수 있다.
+  
+    
+  
+  * 컴포넌트 등록하기
+  
+    * 전역 컴포넌트 등록
+  
+      전역 컴포넌트는 뷰 라이브러리를 로딩하고 나면 접근 가능한 Vue 변수를 이용해서 등록한다.
+  
+      전역 컴포넌트를 모든 인스턴스에 등록하려면 Vue 생성자에서 .component()를 호출하여 수행하면 된다.
+  
+      ```js
+      Vue.component('컴포넌트 이름',{
+        // 컴포넌트 내용
+      });
+      ```
+  
+      컴포넌트 이름은 template 속성에서 사용할 HTML 사용자 정의 태그(custom tag) 이름을 의미 한다.
+  
+      그리고 컴포넌트 태그가 실제 화면의 HTML 요소로 변환될 때 표시될 속성들을 컴포넌트 내용에 작성한다.
+  
+      컴포넌트 내용에는 template, data, methods 등 인스턴스 옵션 속성을 정의할 수 있다.
+  
+      
+  
+    * 03_전역 컴포넌트 등록 예제
+  
+      ```html
+      <html>
+        <head>
+        	<title>Vue Component Registration</title>
+      	</head>
+      	<body>
+          <div id="app">
+            <button>컴포넌트 등록</button>
+      	    <my-component></my-component> <!--전역컴포넌트 표시-->
+      	  </div>
+      
+          <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+          <script>
+            Vue.component('my-component',{
+              template:'<div>전역 컴포넌트가 등록되었습니다!</div>'		<!--전역 컴포넌트 등록-->
+      	    });
+      
+      			new Vue({
+              el:'#app'
+            });
+          </script>
+        </body>
+      </html>
+      ```
+  
+    * 실행결과
+  
+      <img src="/Users/xxbro/bro-lab/vuejs/markdown/img/10.png" alt="10" style="zoom:50%;" />
+  
+      이 코드가 실행되어 화면에 나타나기까지의 과정을 살펴보면 다음과 같다.
+  
+      <img src="./img/11.jpeg" alt="11" style="zoom:50%;" />
+  
+      인스턴스가 생성되고, 인스턴스 내용이 화면요소로 변환될 때 컴포넌트 태그도 함께 변환된다.
+  
+      따라서 컴포넌트 태그에 정의한 컴포넌트 내용은 사용자가 볼 수 있는 형태의 화면요소로 최종 변환된다.
+  
+      전역 컴포넌트를 등록하려면 HTML에서 사용할 태그 이름을 컴포넌트 이름으로 작성하고, 중괄호{} 안에는
+  
+      HTML 태그가 실제로 화면에서 그려질 때 표시될 내용(컴포넌트 내용)을 작성해야 한다. 위 예제에서는 
+  
+      컴포넌트의 이름을 my-component로 지정했고, 컴포넌트 내용으로는 template 속성을 정의하고
+  
+      '전역 컴포넌트가 등록되었습니다!' 라는 <div> 태그를 작성했다.
+  
+      
+  
+    * 지역 컴포넌트 등록
+  
+      지역 컴포넌트 등록은 전역 컴포넌트 등록과는 다르게 인스턴스에 components 속성을 추가하고 
+  
+      등록 할 컴포넌트 이름과 내용을 정의한다.
+  
+      ```js
+      new Vue({
+        components:{
+          '컴포넌트 이름':컴포넌트 내용
+        }
+      });
+      ```
+  
+      컴포넌트 이름은 전역 컴포넌트와 마찬가지로 HTML에 등록할 사용자 정의 태그를 의미하고, 
+  
+      컴포넌트 내용은 컴포넌트 태그가 실제 화면 요소로 변환될 때의 내용을 의미한다.
+  
+      
+  
+    * 04_지역 컴포넌트 등록 예제
+  
+      ```html
+      <html>
+        <head>
+          <title>Vue Component Registration</title>
+        </head>
+        <body>
+          <div id="app">
+            <button>컴포넌트 등록</button>
+            <my-local-component></my-local-component>
+          </div>
+      
+          <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+          <script>
+            var cmp = {
+              // 컴포넌트 내용
+              template: '<div>지역 컴포넌트가 등록되었습니다!</div>'
+            };
+      
+            new Vue({
+              el: '#app',
+              components: {
+                'my-local-component': cmp
+              }
+            });
+          </script>
+        </body>
+      </html>
+      ```
+  
+    * 실행결과
+  
+      <img src="./img/12.png" alt="12" style="zoom:50%;" />
+  
+      변수 cmp에는 화면에 나타낼 컴포넌트의 내용을 정의하고, 뷰 인스턴스에 components 속성을 추가해서 
+  
+      컴포넌트 이름에는 my-local-component를, 컴포넌트 내용에는 미리 정의한 cmp  변수를 지정한다.
+      
+      
+    
+  * 지역 컴포넌트와 전역 컴포넌의 차이
+  
+    * 인트턴스의 유효범위
+  
+      전역 컴포넌트는 인스턴스를 새로 생성할 때마다 인스턴스에 components속성으로 등록할 필요 없이
+  
+      한 번 등록하면 어느 인스턴스에서든지 사용할 수 있다. 반대로 지역 컴포넌트는 새 인스턴스를 생성할 때 마다 등록
+  
+      해 줘야 한다.
+    
+      
+    
+    * 05_인스턴스 유효 범위와 지역 전역 컴포넌트 관계 확인 예제
+  
+      ```html
+    <html>
+        <head>
+        <title>Vue Local and Global Components</title>
+        </head>
+      <body>
+          <div id="app">
+          <h3>첫 번째 인스턴스 영역</h3>
+            <my-global-component></my-global-component>
+          <my-local-component></my-local-component>
+          </div>
+          <hr>
+          <div id="app2">
+            <h3>두 번째 인스턴스 영역</h3>
+            <my-global-component></my-global-component>
+            <my-local-component></my-local-component>
+          </div>
+      
+          <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+          <script>
+            // 전역 컴포넌트 등록
+            Vue.component('my-global-component', {
+              template: '<div>전역 컴포넌트 입니다.</div>'
+            });
+      
+            // 지역 컴포넌트 내용
+            var cmp = {
+              template: '<div>지역 컴포넌트 입니다.</div>'
+            };
+      
+            new Vue({
+              el: '#app',
+              // 지역 컴포넌트 등록
+              components: {
+              'my-local-component': cmp
+              }
+          });
+      
+          // 두 번째 인스턴스
+            new Vue({
+            el: '#app2'
+            });
+        </script>
+        </body>
+    </html>
+      ```
+  
+    *  실행결과
+  
+      <img src="./img/image-20220306212916578.png" alt="image-20220306212916578" style="zoom:50%;" />
+  
+      전역 컴포넌트와 지역 컴포넌트의 유효 범위가 다르기 때문에  첫 번째 인스턴스 영역에는 전역, 지역 컴포넌트가 
+  
+      모두 정상적으로 나타났지만 두 번째 인스턴스 영역에는 전역 컴포넌트만 나타났다. 첫 번째 인스턴스의 유효 범위
+  
+      는 첫 번째 인스턴스 영역으로 제한되기 때문에 <div id='app'> 에 지역 컴포넌트를 등록했어도 두 번째 인스
+  
+      턴스 영역인 <div id='app2'>의 범위 안에서는 지역 컴포넌트가 인식 되지 않는다.
+  
+      두 번째 인스턴스 영역에도 지역 컴포넌트를 나타나게 하려면 인스턴스를 생성할 때 등록해 주면 된다. 
+  
+      두 번째 인스턴스 생성 부분을 아래처럼 수정한다.
+  
+      ```js
+      // 두 번째 인스턴스
+      new Vue({
+        el: '#app2',
+        // 지역 컴포넌트 등록
+        components: {
+          'my-local-component': cmp
+      }
+      });
+    ```
+    
+  * 수정 후 실행결과
+    
+    <img src="./img/image-20220306213805287.png" alt="image-20220306213805287" style="zoom:50%;" />
+    
+    
+
+## 뷰 컴포넌트 통신
+
+* 컴포넌트 간 통신과 유효 범위
+
+  앵귤러 1이나 백본(Backbone.js)과 같은 초창기 자바스크립트 프레임워크에서는 한 화면을 1개의 뷰(View)로 간주 했다.
+
+  따라서 한 화면의 데이터를 해당 화면 영역 어디서든지 호출할 수 있었다. 하지만 뷰(Vue.js)의 경우 컴포넌트로 화면을 구성
+
+  하므로 같은 웹 페이지라도 데이터를 공유할 수 없다. 그 이유는 컴포넌트 마다 자체적으로 고유한 유효범위(Scope)를 갖기
+
+  때문이다. 이는 뷰 프레임워크 내부적으로 정의된 특징이다. 따라서 각 컴포넌트의 유효 범위가 독립적이기 때문에 다른 컴포
+
+  넌트의 값을 직접적으로 참조할 수가 없다.
+
   
 
+  * 06_컴포넌트 유효 범위 증명 예제
+
+    ```html
+    <html>
+      <head>
+        <title>Vue Component Scope</title>
+      </head>
+      <body>
+        <div id="app">
+          <my-component1></my-component1>
+          <my-component2></my-component2>
+        </div>
+    
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script>
+          // 첫 번째 컴포넌트 내용
+          var cmp1 = {
+            template: '<div>첫 번째 지역 컴포넌트 : {{ cmp1Data }}</div>',
+            data: function() {
+              return {
+                cmp1Data : 100
+              }
+            }
+          };
+    
+          // 두 번째 컴포넌트 내용
+          var cmp2 = {
+            template: '<div>두 번째 지역 컴포넌트 : {{ cmp2Data }}</div>',
+            data: function() {
+              return {
+                cmp2Data : cmp1.data.cmp1Data
+              }
+            }
+          };
+    
+          new Vue({
+            el: '#app',
+            // 지역 컴포넌트 등록
+            components: {
+              'my-component1': cmp1,
+              'my-component2': cmp2
+            }
+          });
+        </script>
+      </body>
+    </html>
+    ```
+
+  * 실행결과
+
+    <img src="./img/image-20220306220405929.png" alt="image-20220306220405929" style="zoom:50%;" />
+
+    my-component2 컴포넌트 내용에서 {{ cmp2Data }}는 my-component1 컴포넌트의 data.cmp1Data를 참조
+
+    하고 있다. 자바스크립트의 객체 참조 방식을 생각해 보면 참조 값 100이 화면에 표시되어야 한다. 
+
+    하지만 {{ cpm2Data }}는 아무것도 표시하지 않는다. 이유는 my-component2에서 my-component1의 값을 
+
+    컴포넌트의 유효 범위로 인해 다른 컴포넌트의 값을 직접 참조할 수 없다.
+
+    
+
+* 상 하위 컴포넌트 관계
+
+  컴포넌트는 각각 고유한 유효 범위를 갖고 있기 때문에 직접 다른 컴포넌트의 값을 참조할 수 없다. 따라서 뷰 프레임워크 
+
+  자체에서 정의한 컴포넌트 데이터 전달 방법을 따라야 한다. 가장 기본적인 데이터 전달 방법은 상위(부모) - 하위(자식) 컴포
+
+  넌트 간의 데이터 전달 방법이다.
+
+  상위 - 하위 컴포넌트란 트리 구조에서 부모 노드, 자식 노드처럼 컴포넌트 간의 관계가 부모, 자식으로 이루어진 컴포넌트를 
+
+  의미한다. 
+
+  
+
+  * 상위 - 하위 컴포넌트 간에 데이터를 전달하는 기본적인 구조
+
+    <img src="./img/13.jpeg" alt="13" style="zoom:50%;" />
+
+    먼저 상위에서 하위로는 props라는 특별한 속성을 전달한다. 그리고 하위에서 상위로는 기본적으로 이벤트만 전달 할 
+
+    수 있다.
+
+    
+
+* 상위에서 하위 컴포넌트로 데이터 전달하기
+
+  * props 속성
+
+    props는 상위 컴포넌트에서 하위 컴포넌트로 데이터를 전달할 때 사용하는 속성이다. 
+
+    props 속성을 사용하려면 먼저 아래 처럼 하위 컴포넌트의 속성에 정의해야 한다.
+
+    ```js
+    Vue.component('child-component', {
+      props: ['props 속성 이름'],
+    });
+    ```
+
+    그런 다음 상위 컴포넌트의 HTML 코드에 등록된 child--component 컴포넌트 태그에 v-bind 속성을 추가한다.
+
+    ```html
+    <child-component v-bind:props 속성 이름="상위 컴포넌트의 data 속성"></child-component>
+    ```
+
+    v-bind 속성의 왼쪽 값으로 하위 컴포넌트에서 정의한 props 속성을 넣고, 오른쪽 값으로 하위 컴포넌트에 전달할 상위
+
+    컴포넌트의 data속성을 지정한다.
+
+    
+
+  * 07_props 속성을 사용한 데이터 전달 예제
+
+    ```html
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue Props Sample</title>
+      </head>
+      <body>
+        <div id="app">
+          <!-- 팁 : 오른쪽에서 왼쪽으로 속성을 읽으면 더 수월합니다. -->
+          <child-component v-bind:propsdata="message"></child-component>
+        </div>
+    
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script>
+          Vue.component('child-component', {
+            props: ['propsdata'],
+            template: '<p>{{ propsdata }}</p>',
+          });
+    
+          new Vue({
+            el: '#app',
+            data: {
+              message: 'Hello Vue! passed from Parent Component'
+            }
+          });
+        </script>
+      </body>
+    </html>
+    ```
+
+  * 실행 결과
+
+    <img src="./img/image-20220306224512126.png" alt="image-20220306224512126" style="zoom:50%;" />
+
+    이 코드는 상위 컴포넌트의 message속성을 하위 컴포넌트에 props로 전달하여 메시지를 출력하는 예제 이다.
+
+    props속성을 이해하기 위해 코드를 작성한 순서대로 살펴보자.
+
+     1. new Vue()로 인스턴스를 하나 생성한다.
+
+     2. Vue.component()를 이용하여 하위 컴포넌트인 child-component를 등록한다.
+
+     3. child-component의 내용에 props 속성으로 propsdata를 정의 한다.
+
+     4. HTML 에 컴포넌트 태그를 추가한다. <child-component> 태그의 v-bind 속성을 보면, 
+
+        v-bind:propsdata="message"는 상위 컴포넌트의 message속성 값인 Hello Vue! passed from Parent 
+
+        Component 텍스트를 하위 컴포넌트의 propsdata로 전달 했다.
+
+     5. child-component의 template 속성에 정의된 <p>{{ propsdata }}</p> 는 Hello Vue! passed from Parent Component 가 된다.
+
+    간단히 정리하면 뷰 인스턴스의 data 속성에 정의된 message 속성을 하위 컴포넌트에 props로 전달하여 화면에 
+
+    나타낸다.
+
+    
+
+    예제 코드에서는 child-component를 전역으로 등록한 것 이외에 딱히 상위 컴포넌트를 지정하지 않았다.
+
+    그럼에도 뷰 인스턴스 안에 마치 상위 컴포넌트가 존재하는 것처럼 하위 컴포넌트로 props를 내려 보냈다.
+
+    그 이유는 컴포넌트를 등록함과 동시에 뷰 인스턴스 자체가 상위 컴포넌트가 되기 때문이다.
+
+    <img src="./img/14.jpeg" alt="14" style="zoom:50%;" />
+
+    이렇게 인스턴스에 새로운 컴포넌트를 등로갛면 기존에 있는 컴포넌트는 상위 컴포넌트(부모)가 되고, 새로 등록된
+
+    컴포넌트는 하위(자식) 컴포넌트가 된다. 그리고 이렇게 새 컴포넌트를 등록한 인스턴스를 최상위 컴포넌트(Root 
+
+    Component)라고도 부른다.
+
+    
+
+* 하위에서 상위 컴포넌트로 이벤트 전달하기
+
+  * 이벤트 발생과 수신
+
+    이벤트를 발생시켜(event emit) 상위 컴포넌트에 신호를 보낸다. 상위 컴포넌트에서 하위 컴포넌트의 특정 이벤트가
+
+    발생하기를 기다리고 있다가 하위 컴포넌트에서 특정 이벤트가 발생하면 상위 컴포넌트에서 해당 이벤트를 수신하여
+
+    상위 컴포넌트의 메서드를 호출하는 것이다.
+
+  * 이벤트 발생과 수신 형식
+
+    이벤트 발생과 수신은 $emit()과 v-on: 속성을 사용하여 구현한다.
+
+    ```js
+    // $emit()을 이용한 이벤트 발생
+    this.$emit('이벤트명');
+    ```
+
+    ```html
+    // v-on: 속성을 이용한 이벤트 수신
+    <child-component v-on:이벤트명="상위 컴포넌트의 메서드명"></child-component>
+    ```
+
+    $emit()을 호출하면 괄호 안에 정의된 이벤트가 발생한다. 그리고 일반적으로 $emit()을 호출하는 위치는 하위 컴포넌
+
+    트의 특정 메서드 내부이기 때문에 $emit()을 호출할 때 사용하는  this는 하위 컴포넌트를 가리킨다.
+
+    
+
+    호출한 이벤트는 하위 컴포넌트를 등록하는 태그(상위 컴포넌트의 template 속성에 위치)에서 v-on:으로 받는다.
+
+    하위 컴포넌트에서 발생한 이벤트명을 v-on:속성에 지정하고, 속성의 값에 이벤트가 발생했을 때 호출될 상위 컴포넌트
+
+    의 메서드를 지정한다.
+
+  * 08_이벤트를 발생시키고 수신하기 예제
+
+    ```html
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue Event Emit Sample</title>
+      </head>
+      <body>
+        <div id="app">
+          <child-component v-on:show-log="printText"></child-component>
+        </div>
+    
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script>
+          Vue.component('child-component', {
+            template: '<button v-on:click="showLog">show</button>',
+            methods: {
+              showLog: function() {
+                this.$emit('show-log');
+              }
+            }
+          });
+    
+          new Vue({
+            el: '#app',
+            data: {
+              message: 'Hello Vue! passed from Parent Component'
+            },
+            methods: {
+              printText: function() {
+                console.log("received an event");
+              }
+            }
+          });
+        </script>
+      </body>
+    </html>
+    ```
+
+  * 실행결과
+
+    <img src="./img/image-20220306232416638.png" alt="image-20220306232416638" style="zoom:50%;" />
+
+    이 코드는 child-component의 [show] 버튼을 클릭하여 이벤트를 발생 시키고, 발생한 이벤트로 상위 컴포넌트(여기서 루트 컴포넌트)의 printText() 메서드를 실행시키는 예제다. [show] 버튼을 클릭했을 때 처리되는 과정은 다음과 같다.
+
+    1. [show] 버튼을 클릭하면 클릭 이벤트 v-on:click="showLog"에 따라 showLog() 메서드가 실행된다.
+
+    2. showLog() 메서드 안에  this.$emit('show-log')가 실행되면서 show-log 이벤트가 발생한다.
+
+    3. show-log 이벤트는 <child-component>에 정의한 v-on:show-log에 전달되고, v -on:show-log의 대상 
+
+       메서드인 최상위 컴포넌트의 메서드  printText()가 실행된다.
+
+    4. printText()는 received an event라는 로그를 출력하는 메서드이므로 마지막으로 콘솔에 로그가 출력된다.
+
+    이와 같은 방식으로 하위 컴포넌트에서 상위 컴포넌트로 신호를 올려보내면 상위 컴포넌트의 메서드를 실행할 수도 있
+
+    고, 하위 컴포넌트로 내려보내는 props의 값을 조정할 수도 있다.
+
+    
+
+* 같은 레벨의 컴포넌트 간 통신
+
+  <img src="./img/15.jpeg" alt="15" style="zoom:50%;" />
+
+  그림은 같은 상위 컴포넌트를 가지는 2개의 하위 컴포넌트를 나타낸다. 뷰는 상위에서 하위로만 데이터를 전달해야 하는
+
+  기본적인 통신 규칙을 따르기 때문에 바로 옆 컴포넌트에 값을 전달하려면 하위에서 공통 상위 컴포넌트로 이벤트를 전달한 
+
+  후 공통 상위 컴포넌트에서 2개의 하위 컴포넌트에 props를 내려 보내야 한다.
+
+  이런 방식으로 통신해야 하는 이유는 컴포넌트 고유의 유효 범위 때문이다. 다른 컴포넌트의 값을 직접 참조하지 못하므로 
+
+  기본적인 데이터 전달 방식을 활용하여 같은 레벨 간에 통신이 가능하도록 구조를 갖춰야 한다.
+
+  하지만 이런 통신 구조를 유지하다 보면 상위 컴포넌트가 필요 없음에도 불구하고 같은 레벨 같에 통신하기 위해 강제로 상위
+
+  컴포넌트를 둬야 한다. 이를 해결할 수 있는 방법이 바로 이벤트 버스다.
+
+  
+
+* 관계 없는 컴포넌트 간 통신 - 이벤트 버스
+
+  이벤트 버스(Event Bus)는 개발자가 지정한 2개의 컴포넌트 간에 데이터를 주고받을 수 있는 방법이다.
+
+  <img src="./img/16.jpeg" alt="16" style="zoom:50%;" />
+
+  그림 왼쪽은 뷰에서 제시하는 기본적인 컴포넌트 통신 방식, 오른쪽은 이벤트 버스(Event Bus) 방식으로 중간 컴포넌트
+
+  들을 거치지 않고 바로 데이터를 전달할 수 있다.
+
+  * 이벤트 버스 형식
+
+    ```js
+    // 이벤트 버스를 위한 추가 인스턴스 1개 생성
+    var eventBus = new Vue();
+    ```
+
+    이벤트 버스를 구현하려면 애플리케이션 로직을 담는 인스턴스와는 별개로 새로운 인스턴스를 1개 더 생성하고, 새 인스
+
+    턴스를 이용하여 이벤트를 보내고 받는다. 보내는 컴포넌트에서는 .$emit()을, 받는 컴포넌트에서는 .$on()을 구현한다.
+
+    ```js
+    // 이벤트를 보내는 컴포넌트
+    methods : {
+      메서드명 : function(){
+        eventBus.$emit('이벤트명', 데이터);
+      }
+    }
+    ```
+
+    ```js
+    // 이벤트를 받는 컴포넌트
+    methods : {
+      created : function(){
+        eventBus.$on('이벤트명', function(데이터){
+          ...
+        });
+      }
+    }
+    ```
+
+  * 09_이벤트 버스 구현하기 예제
+
+    ```html
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue Event Bus Sample</title>
+      </head>
+      <body>
+        <div id="app">
+          <child-component></child-component>
+        </div>
+    
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script>
+          var eventBus = new Vue();
+    
+          Vue.component('child-component', {
+            template: '<div>하위 컴포넌트 영역입니다.<button v-on:click="showLog">show</button></div>',
+            methods: {
+              showLog: function() {
+                eventBus.$emit('triggerEventBus', 100);
+              }
+            }
+          });
+    
+          var app = new Vue({
+            el: '#app',
+            created: function() {
+              eventBus.$on('triggerEventBus', function(value){
+                console.log("이벤트를 전달 받음. 전달 받은 값 : ", value);
+              });
+            }
+          });
+        </script>
+      </body>
+    </html>
+    ```
+
+  * 실행 결과
+
+    <img src="./img/image-20220306235912355.png" alt="image-20220306235912355" style="zoom:50%;" />
+
+    위 코드는 등록한 하위 컴포넌트의 [show] 버튼을 클릭했을 때 이벤트 버스를 이용하여 상위 컴포넌트로 데이터를 전달
+
+    하는 코드다.
+
+    1. 먼저 이벤트 버스로 활용할 새 인스턴스를 1개 생성하고  eventBus라는 변수에 참조한다. 이제 eventBus변수로
+
+       새 인스턴스의 속성과 메서드에 접근할 수 있다.
+
+    2. 하위 컴포넌트에는 template속성과 methods 속성을 정의한다. template 속성에는 '하위 컴포넌트 영역입니
+
+       다.' 라는 텍스트와 [show] 버튼을 추가한다. methods 속성에는  showLog() 메서드를 정의하고, 메서드안에
+
+       eventBus.$emit()을 선언하여 triggerEventBus라는 이벤트를 발생하는 로직을 추가한다.
+
+       이 이벤트는 발생할 때 수신하는 쪽에 인자 값으로 100이라는 숫자를 함께 전달한다.
+
+    3. 상위 컴포넌트의 created 라이프 사이클 훅에 eventBus.$on()으로 이벤트를 받는 로직을 선언한다. 
+
+       발생한 이벤트 triggerEventBus를 수신할 때 앞에서 전달된 인자 값 100이 콘솔에 출력된다.
+
+    간단히 정리해 보면 [show] 버튼을 클릭하여 showLog()가 실행되었을 때 eventBus의 이벤트가 발생한다.
+
+    그리고 발생한 이벤트는 상위 컴포넌트의 created()에 있는 eventBus.$on()에서 전달 받는다. 이벤트와 함께
+
+    전달된 인자 값 100이 콘솔 로그에 함께 출력된다.
+
+    
+
+    이벤트 버스를 활용하면 props 속성을 이용하지 않고도 원하는 컴포넌트 간에 직접적으로 데이터를 전달할 수 있어 
+
+    편리하지만 컴포넌트가 많아지면 어디서 어디로 보냈는지 관리가 되지 않는 문제가 발생한다. 이 문제를 해결하려면 
+
+    뷰엑스(Vuex)라는 상태 관리 도구가 필요하다. 뷰엑스는 중, 대형 애플리케이션에서 컴포넌트 간의 데이터 관리를 
+
+    효율적으로 하는 라이브러리 이다. 구글에서  'vuex 시작하기', 'vuex 튜토리얼' 로 검색해 보자.
+
+    
