@@ -48,25 +48,14 @@
       크롬 브라우저 설정 -> 도구 더 보기 -> 확장 프로그램 -> 세부정보 -> 파일 URL에 대한 액세스 허용
     
     * 사용 방법 : 개발자 도구 에서 Vue 탭을 선택
-      ![title](./img/20.png) {: .right}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      
+      ![](./img/20.png)    
+      
+      
 
 ## #.Hello Vue.js 프로젝트 생성
 
-<img src="./img/19.png" align="left"/>
+![](./img/19.png) 
 
 
 * index.html
@@ -103,7 +92,7 @@
 
 * 뷰(Vue.js)는 UI 화면 개발 방법 중 하나인 MVVM 패턴의 뷰 모델(ViewModel)에 해당하는 화면단 라이브러리 입니다.
 
-<img src="./img/17.png" align="left">
+  ![](./img/17.png) 
 
 * MVVM 패턴이란 화면을 모델(Model) - 뷰(View) - 뷰 모델(ViewModel)로 구조화하여 개발하는 방식을 의미한다.
 
@@ -140,7 +129,7 @@
 
 * 화면을 컴포넌트로 구조화한 컴포넌트 간 관계도.
 
-  <img src="./img/18.png" align="left"/>
+  ![](./img/18.png) 
 
   위 그림의 왼쪽 화면은 각영역을 컴포넌트로 지정하여 구분한 것이고, 오른쪽 그림은 왼쪽 화면의 각 컴포넌트 간의 
 
@@ -193,7 +182,7 @@
 
 * 뷰 인스턴스 생성.
 
-  <img src="./img/21.png" align="left"/>
+  ![](./img/21.png) 
 
   * 예제) Hello Vue 
 
@@ -235,7 +224,7 @@
 
   시작점을 의미한다. 뷰 인스턴스로 화면을 렌더링 할 때 화면이 그려질 위치의 돔 요소를 지정해 주어야 한다.
 
-  <img src="./img/1.jpeg" align="left"/>
+  ![](./img/1.jpeg) 
 
   여기서 #app 값은 화면의 돔 요소 중 app 라는 아이디를 가진 요소를 의미한다. 여기서 사용한 # 선택자는 CSS 선택자 규칙과 같다.
 
@@ -261,28 +250,28 @@
 
   화면에 인스턴스 옵션 속성을 적용하는 과정은 다음과 같다.
 
-  <img src="./img/2.jpeg" align="left"/>
+  ![](./img/2.jpeg) 
 
   ```js
-new Vue({
+  new Vue({
     el : '#app',
   data : {
       message : 'Hello Vue.js!'
     }
   });
   ```
-  
+
   인스턴스 옵션 속성 el과 data를 인스턴스에 정의하고 new Vue()로 인스턴스를 생성한다.
-  
+
   그리고 브라우저에서 위 샘플코드를 실행하면 아래와 같이 el 속성에 지정한 화면요소(돔)에 인스턴스가 부착된다.
 
-  <img align="left" src="./img/3.jpeg"/>
+  ![](./img/3.jpeg) 
 
   el 속성에 인스턴스가 부착되고 나면 인스턴스에 정의한 옵션 객체의 내용(data속성)이 el 속성에 지정한 화면요소와
 
   그 이하 레벨의 화면 요소에 적용되어 값이 치환된다.
 
-  <img align="left" src="./img/4.jpeg" />
+  ![](./img/4.jpeg) 
 
   data 속성의 message 값 Hello Vue.js! 가 {{ message }}와 치환된다.
 
@@ -299,11 +288,11 @@ new Vue({
 
   위 코드를 실행하면 결과는 아래 와 같다.
 
-  <img align="left" src="./img/5.jpeg" />
+  ![](./img/5.jpeg) 
 
   message 속성의 값이 Hello Vue.js! 로 바뀌지 않고 그대로 출력되는 이유는 인스턴스의 유효 범위 때문이다.
 
-  <img src="./img/6.jpeg" align="left"/>
+  ![](./img/6.jpeg) 
 
   
 
@@ -326,7 +315,7 @@ new Vue({
 
   관련되어 총 8개가 있다.
 
-  <img src="./img/7.jpeg" align="left" />
+  ![](./img/7.jpeg) 
 
   
 
@@ -494,7 +483,7 @@ new Vue({
 
 * 실행결과
 
-  <img src="./img/8.png" align="left"/>
+  ![](./img/8.png) 
 
   도해의 흐름대로 beforeCreate, created, mounted가 표시되는 것을 확인할 수 있다.
 
@@ -540,7 +529,7 @@ new Vue({
 
 * 실행결과
 
-  <img src="./img/9.png" align="left"/>
+  ![](./img/9.png) 
 
 * mounted 단계에서 화면에 표시되는 message값이 갱신 되었고, 이에 따라 updated 로그가 출력 되었다.
 
@@ -569,7 +558,7 @@ new Vue({
 
   박스(input box) 등과 같은 화면 구성 요소들을 잘게 쪼개어 컴포넌트로 관리 한다.
 
-  <img src="./img/22.png" align="left"/>
+  ![](./img/22.png) 
 
   위의 왼쪽 그림은 화면 전체를 Header, Content, Footer로 분할했고, Content 영역을 Aside, List 영역으로 분할했다.
 
@@ -640,11 +629,11 @@ new Vue({
 
 * 실행결과
 
-  <img src="./img/10.png" align="left" />
+  ![](./img/10.png) 
 
   이 코드가 실행되어 화면에 나타나기까지의 과정을 살펴보면 다음과 같다.
 
-  <img src="./img/11.jpeg" align="left"/>
+  ![](./img/11.png) 
 
   이 그림을 보면 인스턴스가 생성되고, 인스턴스 내용이 화면요소로 변환될 때 컴포넌트 태그도 함께 변환된다.
 
@@ -674,9 +663,7 @@ new Vue({
 
   결론적으로 인스턴스가 생성된 후 화면에 그려질 때 실제 HTML 코드 모양은 다음과 같다.
 
-  <img src="./img/23.png" align="left"/>
-
-  
+  ![](./img/23.png) 
 
 * 지역 컴포넌트 등록
 
@@ -735,23 +722,11 @@ new Vue({
 
   그리고 HTML에 <my-local-component>태그를 추가하여 컴포넌트를 화면에 나타낸다.
 
-  <img src="./img/24.png" align="left">
+  ![](./img/24.png) 
 
-* 실행결과<img src="./img/12.png" align="left"/>
+* 실행결과
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  ![](./img/12.jpeg) 
 
 ### 2-2-3.지역 컴포넌트와 전역 컴포넌의 차이
 
@@ -815,7 +790,7 @@ new Vue({
 
 *  실행결과
 
-  <img src="./img/26.png" align="left" />
+  ![](./img/26.png) 
 
   전역 컴포넌트와 지역 컴포넌트의 유효 범위가 다르기 때문에  첫 번째 인스턴스 영역에는 전역/지역 컴포넌트가 
 
@@ -831,7 +806,7 @@ new Vue({
 
   등록했어도 두 번째 인스턴스 영역인 <div id='app2'>의 범위 안에서는 지역 컴포넌트가 인식되지 않아 아래와 같은 결과를 나타낸다.
   
-  <img src="./img/25.png" align="left" />
+  ![](./img/25.png) 
   
   <my-local-component> 태그는 두 번째 인스턴스의 유효 범위 안에 있더라도 이 컴포넌트가 등록된 첫 번째 유효범위를 벗어나기 때문에 
   
@@ -855,7 +830,7 @@ new Vue({
 
 * 수정 후 실행결과
 
-  <img src="./img/image-20220306213805287.png" align="left"/>
+  ![](./img/image-20220306213805287.png) 
 
   
 
@@ -935,7 +910,7 @@ new Vue({
 
 * 실행결과
 
-  <img src="./img/image-20220306220405929.png"  align="left"/>
+  ![](./img/image-20220306220405929.png) 
 
   이유는 my-component2에서 my-component1의 값을 컴포넌트의 유효 범위로 인해 다른 컴포넌트의 값을 직접 참조할 수 없기 때문.
 
@@ -959,7 +934,7 @@ new Vue({
 
 * 상위 - 하위 컴포넌트 간에 데이터를 전달하는 기본적인 구조
 
-  <img src="./img/13.jpeg" align="left" />
+  ![](./img/13.jpeg)  
 
   먼저 상위에서 하위로는 props라는 특별한 속성을 전달한다. 그리고 하위에서 상위로는 기본적으로 이벤트만 전달 할 수 있다.
 
@@ -998,7 +973,7 @@ new Vue({
 
 * props 속성을 사용해서 데이터를 전달하는 예제
 
-  <img src="./img/27.png" align="left" />
+  ![](./img/27.png) 
 
   이 코드는 상위 컴포넌트의 message속성을 하위 컴포넌트에 props로 전달하여 메시지를 출력하는 예제다.
 
@@ -1064,7 +1039,7 @@ new Vue({
 
 * 실행 결과
 
-  <img src="./img/image-20220306224512126.png" align="left"/>
+  ![](./img/image-20220306224512126.png) 
 
   
 
@@ -1072,9 +1047,7 @@ new Vue({
 
   그럼에도 뷰 인스턴스 안에 마치 상위 컴포넌트가 존재하는 것처럼 하위 컴포넌트로 props를 내려 보냈다.
 
-  그 이유는 컴포넌트를 등록함과 동시에 뷰 인스턴스 자체가 상위 컴포넌트가 되기 때문이다.
-
-  <img src="./img/14.jpeg" align="left"/>
+  그 이유는 컴포넌트를 등록함과 동시에 뷰 인스턴스 자체가 상위 컴포넌트가 되기 때문이다.![](./img/14.jpeg) 
 
   이렇게 인스턴스에 새로운 컴포넌트를 등록하면 기존에 있는 컴포넌트는 상위 컴포넌트(부모)가 되고, 새로 등록된
 
@@ -1125,7 +1098,7 @@ new Vue({
 
 * 이벤트를 발생시키고 수신하기
 
-  <img src="./img/28.png" align="left" />
+  ![](./img/28.png) 
 
   이 코드는 child-component의 [show] 버튼을 클릭하여 이벤트를 발생 시키고, 발생한 이벤트로 상위 컴포넌트(여기서 루트 컴포넌트)의 printText() 메서드를 실행시키는 예제다. [show] 버튼을 클릭했을 때 처리되는 과정은 다음과 같다.
 
@@ -1187,7 +1160,9 @@ new Vue({
 
 
 
-* 실행결과<img src="./img/image-20220306232416638.png" align="left"/>
+* 실행결과
+
+  ![](./img/image-20220306232416638.png) 
 
 ​	
 
@@ -1199,7 +1174,7 @@ new Vue({
 
 ### 2-3-5.같은 레벨의 컴포넌트 간 통신
 
-<img src="./img/15.jpeg" align="left"/>
+![](./img/15.jpeg) 
 
 * 그림은 같은 상위 컴포넌트를 가지는 2개의 하위 컴포넌트를 나타낸다. 뷰는 상위에서 하위로만 데이터를 전달해야 하는
 
@@ -1221,7 +1196,7 @@ new Vue({
 
 * 이벤트 버스(Event Bus)는 개발자가 지정한 2개의 컴포넌트 간에 데이터를 주고받을 수 있는 방법이다.
 
-  <img src="./img/16.jpeg" align="left" />
+  ![](./img/16.jpeg) 
 
   그림 왼쪽은 뷰에서 제시하는 기본적인 컴포넌트 통신 방식이며 하위 컴포넌트 B 에서 상위 컴포넌트 A로 데이터를 전달하려면
 
@@ -1272,7 +1247,7 @@ new Vue({
 
 * 이벤트 버스 구현하기
 
-  <img src="./img/29.png" align="left" />
+  ![](./img/29.png) 
 
   위 코드는 등록한 하위 컴포넌트의 [show] 버튼을 클릭했을 때 이벤트 버스를 이용하여 상위 컴포넌트로 데이터를 전달
 
@@ -1351,9 +1326,7 @@ new Vue({
 
 * 실행 결과
 
-  <img src="./img/image-20220306235912355.png" align="left"/>
-
-  
+  ![](./img/image-20220306235912355.png) 
 
   이벤트 버스를 활용하면 props 속성을 이용하지 않고도 원하는 컴포넌트 간에 직접적으로 데이터를 전달할 수 있어 
 
@@ -1421,35 +1394,34 @@ new Vue({
 
 * 뷰 라우터 실습
 
-  <img src="./img/30.png" align="left">
+  ![](./img/30.png) 
 
-  	1. 각<router-link>는 화면 상에서[Main 컴포넌트로 이동], [Login 컴포넌트로 이동] 이라는 <a> 버튼 태그로 변환되어
-  	
-  	표시 된다. 각 버튼을 클릭하면 to="" 에 정의된 텍스트 값이 브라우저 URL 끝에 추가된다. 여기서는 /main과 /login의
-  	
-  	2개의 URL이 끝에 추가된다.
-  	
-  	2. <router-view>는 갱신된 URL에 해당하는 화면을 보여주는 영역이다. <router-view>에 나타낼 화면은 <script>에서 정의한다.
-  	
-  	3. Main과 Login 컴포넌트에는 template 속성으로 각 컴포넌트를 구분할 수 있는 정도의 간단한 HTMl 코드를 정의한다.
-  	
-  	4. routes 변수에는 URL 앖이 /main일 때 Main 컴포넌트를, /login일 때 Login 컴포넌트를 표시하도록 정의한다.
-  	
-  	5. router 변수에는 뷰 라우터를 하나 생성하고, routes를 삽입해 URL에 따라 화면이 전환될 수 있게 정의한다.
-  	
-  	6. 마지막 부분은 새 인스턴스를 생성하고 라우터의 정보가 담긴 router를 추가한다. 여기서 .$mount()는 el 속성과 같이 
-  	
-  	인스턴스를 화면에 붙여주는 역할을 한다.
-  	
-  	```
-  	$mount()API란?
-  	$mount()API는 el속성과 동일하게 인스턴스를 화면에 붙이는 역할을 한다. 인스턴스를 생성할 때 el속성을 넣지 않았더라도
-  	생성하고 나서 $mount()를 이용하면 강제로 인스턴스를 화면에 붙일 수 가 있다. 참고로, 뷰 라우터의 공식 문서는 모두 인스턴스
-  	안에 el을 지정하지 않고 라우터만 지정하여 생성한 다음 생성된 인스턴스를 $mount()를 이용해 붙이는 식으로 안내하고 있다.
-  	```
-
-
-  ​    
+  1. 각<router-link>는 화면 상에서[Main 컴포넌트로 이동], [Login 컴포넌트로 이동] 이라는 <a> 버튼 태그로 변환되어
+  
+     표시 된다. 각 버튼을 클릭하면 to="" 에 정의된 텍스트 값이 브라우저 URL 끝에 추가된다. 여기서는 /main과 /login의
+  
+     2개의 URL이 끝에 추가된다.
+  
+  2. <router-view>는 갱신된 URL에 해당하는 화면을 보여주는 영역이다. <router-view>에 나타낼 화면은 <script>에서 정의한다.
+  
+  3. Main과 Login 컴포넌트에는 template 속성으로 각 컴포넌트를 구분할 수 있는 정도의 간단한 HTMl 코드를 정의한다.
+  
+  4. routes 변수에는 URL 앖이 /main일 때 Main 컴포넌트를, /login일 때 Login 컴포넌트를 표시하도록 정의한다.
+  
+  5. router 변수에는 뷰 라우터를 하나 생성하고, routes를 삽입해 URL에 따라 화면이 전환될 수 있게 정의한다.
+  
+  6. 마지막 부분은 새 인스턴스를 생성하고 라우터의 정보가 담긴 router를 추가한다. 여기서 .$mount()는 el 속성과 같이 
+  
+     인스턴스를 화면에 붙여주는 역할을 한다.
+  
+     ```
+     $mount()API란?
+     $mount()API는 el속성과 동일하게 인스턴스를 화면에 붙이는 역할을 한다. 인스턴스를 생성할 때 el속성을 넣지 않았더라도
+     생성하고 나서 $mount()를 이용하면 강제로 인스턴스를 화면에 붙일 수 가 있다. 참고로, 뷰 라우터의 공식 문서는 모두 인스턴스
+     안에 el을 지정하지 않고 라우터만 지정하여 생성한 다음 생성된 인스턴스를 $mount()를 이용해 붙이는 식으로 안내하고 있다.
+     ```
+  
+     
 
 * 10_뷰 라우터 실습.html
 
@@ -1497,15 +1469,15 @@ new Vue({
 
 * 실행결과
 
-  <img src="./img/31.png" align="left">
+  ![](./img/31.png) 
 
   * 위 그림에서 'Main 컴포넌트로 이동'을 클릭하면 깜박거리 현상 없이 URL의 끝이 'main'으로 바뀌면서 아래와 같은 화면이 나타난다.
 
-  <img src="./img/32.png" align="left">
+  ![](./img/32.png) 
 
   * 마찬가리로 'Login 컴포넌트로 이동' 을 클릭하면 URL의 끝이 'login'으로 바뀌면서 아래와 같은 화면이 나타난다.
 
-  <img src="./img/33.png" align="left">
+  ![](./img/33.png) 
 
   * 라우터 URL의 해시 값(#)을 없애는 방법
 
@@ -1528,7 +1500,7 @@ new Vue({
 
   네스티드라는 단어에서 추측할 수 있듯이 상위 컴포넌트 1개에 하위 컴포넌트 1개를 포함하는 구조로 아래와 같이 구성한다.
 
-  <img src="./img/34.png" align="left">
+  ![](./img/34.png) 
 
 * 위 그림처럼 네스티드 라우터를 이용하면 URL에 따라서 컴포넌트의 하위 컴포넌트가 다르게 표시된다.
 
@@ -1540,11 +1512,9 @@ new Vue({
 
 * 네스티드 라우터 구현
 
-  <img src="./img/35.png" align="left" />
+  ![](./img/35.png) ![](./img/36.png) 
 
-  <img src="./img/36.png" align="left" />
-
-	1. **<div id="app">**에 <router-view>를 등록하여 User 컴포넌트가 뿌려질 영역을 정의한다.
+  1. **<div id="app">**에 <router-view>를 등록하여 User 컴포넌트가 뿌려질 영역을 정의한다.
 
 	2. User, UserPost, UserProfile 컴포넌트의 내용을 각 객체에 정의한다.		
 
@@ -1553,7 +1523,7 @@ new Vue({
 	   여기서 주목할 부분은 User 컴포넌트의 template에 하위 컴포넌트를 표시할<router-view>가 하나 더 있다는 점 이다.
 
 	3. routes에 라우터 정보를 정의한다. 
-	
+
 	   제일 먼저 path 속성에는 네스티드 라우터를 실행하는 기본 URL을 /user로 설정하고, 
 	
 	   상위 컴포넌트는 User 컴포넌트로 지정한다.
@@ -1578,7 +1548,7 @@ new Vue({
 	
 	URL에 따라 하위 컴포넌트의 내용이 바뀌게 된다. 컴포넌트 간 관계를 그림으로 표현하면 아래와 같다.
 	
-	<img src="./img/37.png" align="left" />
+	![](./img/37.png) 
 
 
 
@@ -1647,15 +1617,15 @@ new Vue({
 
   * 첫 화면에는 아무것도 보이지 않으므로 실행 후 URL 값의 끝에 user를 입력한다.
 
-    <img src="./img/38.png" align="left" />
+    ![](./img/38.png) 
 
   * 이제 하위 컴포넌트 UserPost가 제대로 표시되는지 확인하기 위해 URL의 값의 끝에 '/posts'를 추가
 
-    <img src="./img/39.png" align="left" />
+    ![](./img/39.png) 
 
    *  이번에는 URL 값의 끝을 'profile' 로 변경하고 UserProfile 컴포넌트가 정상적으로 나타나는지 확인
 
-      <img src="./img/40.png" align="left" />
+      ![](./img/40.png) 
 
       
 
@@ -1673,13 +1643,13 @@ new Vue({
 
   오른쪽 그림처럼 같은 레벨에서 여러 개의 컴포넌트를 한 번에 표시한다.
 
-  <img src="./img/41.png" align="left" />
+  ![](./img/41.png) 
 
   
 
 * 네임드 뷰 구현하기
 
-  <img src="./img/42.png" align="left" />
+  ![](./img/42.png) 
 
   파일을 실행하면 URL값 '/'에 의해 네임드 뷰가 바로 실행된다. 코드를 살펴보자.
 
@@ -1710,7 +1680,7 @@ new Vue({
 
 * 실행결과
 
-  <img src="./img/43.png" align="left" />
+  ![](./img/43.png) 
 
   * 이렇게 네임드 뷰를 활용하면 특정 페이지로 이동했을 때 해당 URL에 맞춰 여러 개의 컴포넌트를 한 번에
 
@@ -1751,7 +1721,7 @@ new Vue({
 
 * 뷰 리소스로 데이터 받아오기
 
-  <img src="./img/44.png" align="left" />
+  ![](./img/44.png) 
 
   1. 먼저 버튼은 인스턴스 영역 안인 <div>태그 안에<button>태그로 추가한다. 그리고 v-on:click을 이용하여
 
@@ -1801,7 +1771,7 @@ new Vue({
 
 * 실행결과
 
-  <img src="./img/45.png" align="left" />
+  ![](./img/45.png) 
 
   * [프레임워크 목록 가져오기] 버튼을 클릭하면 개발자 도구의 'Console' 패널에 response 객체의 값과 프레임워크 목록을 객체에 담아 
 
@@ -1884,7 +1854,7 @@ new Vue({
 
 * 액시오스로 데이터 받아오기
 
-  <img src="./img/46.png" align="left" />
+  ![](./img/46.png) 
 
    *  뷰 리소스로 데이터 받아오기 예제와 비교하면 라이브러리를 로딩해 오는 CDN의 주소와 GET 요청을 보내는
 
@@ -1927,7 +1897,7 @@ new Vue({
 
 * 실행결과
 
-  <img src="./img/47.png" align="left" />
+  ![](./img/47.png) 
 
    *  response 객체를 확인해 보면 data 속성이 일반 문자열 형식이 아니라 객체 형태이기 때문에 별도로 JSON.parse()를 사용해서 
 
@@ -1972,9 +1942,7 @@ new Vue({
 
   * template 속성을 사용한 경우 vs 사용하지 않은 경우
 
-    <img src="./img/48.png" align="left" />
-
-    
+    ![](./img/48.png) 
 
     왼쪽 코드는 먼저 <h3>{{ message}}</h3>를 화면에 표시하고, 인스턴스가 생성되면 message의 값을 Hello vue.js 로 치환한다.
 
@@ -2053,7 +2021,7 @@ new Vue({
 
   * v-bind 예제
   
-    <img src="./img/49.png" align="left" />
+    ![](./img/49.png) 
   
     위 코드는 HTML의 기본 속성인 id, class, style의 앞에 v-bind:를 붙여서 뷰 인스턴스에 정의한 데이터 속성과 연결하여
   
@@ -2089,7 +2057,7 @@ new Vue({
   
   * 실행결과
   
-    <img src="./img/50.png" align="left" />
+    ![](./img/50.png) 
   
     실행 결과 화면을 보면 데이터 속성의 idA, classA, styleA 값이 화면의 요소에 각각 연결되어 나타난 것을 확인할 수 있다.
   
@@ -2112,7 +2080,7 @@ new Vue({
 
 * 자바스크립트 표현식 예제
 
-  <img src="./img/51.png" align="left" />
+  ![](./img/51.png) 
 
   첫 번째<p> 태그는 message의 값 Hello Vue.js!를 그대로 출력한다.
 
@@ -2151,7 +2119,7 @@ new Vue({
 
 * 실행결과
 
-  <img src="./img/52.png" align="left" />
+  ![](./img/52.png) 
 
   
   
@@ -2161,7 +2129,7 @@ new Vue({
 
   둘째, 복잡한 연산은 인스턴스 안에서 처리하고 화면에는 간단한 연산 결과만 표시해야 한다.
   
-  <img src="./img/53.png" align="left" />
+  ![](./img/53.png) 
   
   {{ var a = 10; }} 은 자바스크립트 선언문이고, {{ if(true){return 100} }}은 분기 구문이므로
   
@@ -2255,9 +2223,7 @@ new Vue({
 
 * 많이 사용되는 디렉티브 다루기
 
-  <img src="./img/54.png" align="left" />
-
-  <img src="./img/55.png" align="left" />
+  ![](./img/54.png) ![](./img/55.png) 
 
   1. v-if : 분기 처리의 조건 값인 flag 값이 true이므로 '두잇 Vue.js' 텍스트를 화면에 표시한다.
 
@@ -2317,7 +2283,7 @@ new Vue({
 
 * 실행결과
 
-  <img src="./img/56.png" align="left" />
+  ![](./img/56.png) 
 
   [경고 창 버튼] 을 클릭해서 실제로 경고 창이 열리는지 확인하고 
 
@@ -2344,7 +2310,7 @@ new Vue({
 
 * v-on 디렉티브 이용해 이벤트 처리하기
 
-  <img src="./img/57.png" align="left" />
+  ![](./img/57.png) 
 
   
 
@@ -2386,13 +2352,13 @@ new Vue({
 
 * 실행화면
 
-  <img src="./img/58.png" align="left" />
+  ![](./img/58.png) 
 
   
 
 * v-on 디렉티브로 메서드 호출할 때 인자 값 넘기기
 
-  <img src="./img/59.png" align="left" />
+  ![](./img/59.png) 
 
   이벤트가 발생할 때 호출될 메서드 이름인 clickBtn만 적지 않고, clickBtn(10)으로 적었다.
 
@@ -2432,13 +2398,13 @@ new Vue({
 
 * 실행화면
 
-  <img src="./img/60.png" align="left" />
+  ![](./img/60.png) 
 
   
 
 * event 인자를 이용해 돔 이벤트에 접근하기
 
-  <img src="./img/61.png" align="left" />
+  ![](./img/61.png) 
 
   HTML 태그에서 v-on:click으로 호출하는 메서드에 인자를 전달하지 않아도 clickBtn:function(event){} 와 같이
 
@@ -2476,7 +2442,7 @@ new Vue({
 
 * 실행화면
 
-  <img src="./img/62.png" align="left" />
+  ![](./img/62.png) 
 
 
 
@@ -2492,7 +2458,7 @@ new Vue({
 
   computed 속성은 데이터 연산들을 정의하는 영역이다.
 
-  <img src="./img/63.png" align="left" />
+  ![](./img/63.png) 
 
   HTML에 바로 {{ message.split('').reverse().join('') }}를 정의할 수도 있지만 
 
@@ -2516,15 +2482,13 @@ new Vue({
 
   computed 속성은 대상 데이터의 값이 변경되면 자동적으로 수행된다는 것이다.
 
-  <img src="./img/64.png" align="left" />
-
-  <img src="./img/65.png" align="left" />
+  ![](./img/64.png) ![](./img/65.png) 
 
   위 코드는 앞에서 살펴본 computed 속성으로 문자열 순서를 바꾼 코드와 동일한 결과를 낸다
 
   다만 차이점이 있다면 [문자열 역순]버튼을 클릭했을 때만 문자열 순서를 역으로 변환한다는 것이다.
 
-  <img src="./img/66.png" align="left" />
+  ![](./img/66.png) 
 
   위의 차이점을 인지한 상태에서 다시 캐싱 면에서 두 속성을 보면 methods 속성은 수행할 때마다
 
@@ -2588,7 +2552,7 @@ new Vue({
 
 * watch 속성 예제
 
-  <img src="./img/67.png" align="left" />
+  ![](./img/67.png) 
 
   위 코드는 간단한 인풋 박스(input box)의 입력 값을 v-model 디렉티브로 연결하여 입력 값에
 
@@ -2636,7 +2600,7 @@ new Vue({
 
 * 실행결과
 
-  <img src="./img/68.png" align="left" />
+  ![](./img/68.png) 
   
 * watch 다른 예
 
@@ -2677,7 +2641,7 @@ new Vue({
 
   제작하다 보면 다음과 같은 상황에서 파일 구조에 한계점을 느끼게 된다.
 
-  <img src="./img/69.png" align="left" />
+  ![](./img/69.png) 
 
   위 코드는 HTML 파일에 뷰 컴포넌트를 2개 등록하고, <script> 태그 안에 컴포넌트의 template 속성을 추가한 코드다.
 
@@ -2697,7 +2661,7 @@ new Vue({
 
 * .vue 파일은 아래와 같은 기본 구조를 가진다.
 
-  <img src="./img/70.png" align="left">
+  ![](./img/70.png) 
 
   ```
   참고 : <script>의 export default{} 코드는 ES6의 자바스크립트 모듈화와 관련된 문법이다. 
@@ -2708,7 +2672,7 @@ new Vue({
 
   싱글 파일 컴포넌트 체계로 변환하면 아래와 같다.
 
-  <img src="./img/71.png" align="left">
+  ![](./img/71.png) 
 
   이러한 방식으로 <template> 태그 안에는 HTML 태그와 뷰 데이터 바인딩 값들을 넣고, <script> 태그에는
 
@@ -2749,11 +2713,11 @@ new Vue({
 
   커맨드 창에서 "npm install vue-cli -global" 을 입력하면 뷰 CLI가 시스템 레벨에 설치된다.
 
-  <img src="./img/72.png" align="left">
+  ![](./img/72.png) 
 
   시스템 레벨에 설치되었다는 말은 커맨드 창에서 vue를 입력하면 다음처럼 명령어를 인식한다는 의미 이다.
 
-  <img src="./img/73.png" align="left">
+  ![](./img/73.png) 
 
   
 
@@ -2796,9 +2760,9 @@ new Vue({
 
 1. 뷰 프로젝트를 생성할 빈 폴더를 하나 생성하고, 빈 폴더에서 명령 프롬프트 창을 열어 "vue init webpack-simple"을 입력한다.
 
-   <img src="./img/74.png" align="left">
+   ![](./img/74.png) 
 
-   <img src="./img/75.png" align="left">
+   ![](./img/75.png) 
 
    새 폴더를 만들고 그 안에서 명령어를 수행했기 때문에 현재 디렉터리에 프로젝트를 생성한다.
 
@@ -2814,13 +2778,13 @@ new Vue({
 
    모두 다운로드 한다. 다운로드가 완료되면 다음과 같은 폴더 구조가 생성된다.
 
-   <img src="./img/76.png" align="left">
+   ![](./img/76.png) 
 
    
 
    여기서 package.json 의 내용을 살펴보자.
 
-   <img src="./img/77.png" align="left">
+   ![](./img/77.png) 
 
    vue init 명령어로 프로젝트를 생성할 때 package.json 파일도 함께 생성된다.
 
@@ -2844,11 +2808,11 @@ new Vue({
 
    프로젝트 폴더의 index.html 파일이 실행된 것이다.
 
-   <img src="./img/78.png" align="left">
+   ![](./img/78.png) 
 
    그리고 명령어를 실행한 명령 프롬프트 창에는 다음과 같은 내용이 표시된다.
 
-   <img src="./img/79.png" align="left">
+   ![](./img/79.png) 
 
    맨 아래 3줄은 뷰 프로젝트가 http://localhost:8080/에 구동되고 있음을 알려주면서 
 
@@ -2891,7 +2855,7 @@ new Vue({
 
   앞에서 생성한 webpack-simple 프로젝트의 webpack.config.js 파일을 보면 다음과 같이 뷰 로더가 적용되어 있다.
 
-  <img src="./img/80.png" align="left">
+  ![](./img/80.png) 
 
   module과 rules는 웹팩의 로더(Loader)를 설정하는 속성이다. 
 
@@ -2907,9 +2871,9 @@ new Vue({
 
   가정하고 뷰 로더를 적용한 모습을 그림으로 나타내 보자.
 
-  <img src="./img/81.png" align="left">
+  ![](./img/81.png) 
 
-  <img src="./img/82.png" align="left">
+  ![](./img/82.png) 
 
   위와 같이 뷰 CLI로 생성된 프로젝트 폴더의 모든 .vue 파일에 뷰 로더가 적용된다.
 
@@ -2919,7 +2883,7 @@ new Vue({
 
   어느 정도의 가벼운 화면 프로토타이핑은 가능하다.
 
-  <img src="./img/83.png" align="left">
+  ![](./img/83.png) 
 
   
 
@@ -2937,7 +2901,7 @@ new Vue({
 
 * 웹팩은 흔히 모듈 번들라라고 알려져 있다. 공식 홈페이지에서도 다음처럼 모듈 번들러라고 부르고 있다.
 
-  <img src="./img/84.png" align="left">
+  ![](./img/84.png) 
 
   여기서부터 '모듈이 무엇이고, 번들러는 또 무엇인가?' 라는 의문을 가질 수 있을 것이다. 공식 홈페이지에서는
 
@@ -3008,7 +2972,7 @@ new Vue({
 
   명령어를 실행하면 아래와 같이 결과가 출력된다.
 
-  <img src="./img/85.png" align="left">
+  ![](./img/85.png) 
 
   첫 번째 줄은 웹팩 데브 서버가 노드로 로컬 서버 하나를 띄워 http://localhost:8080에 프로젝트를 실행하고 있다는 의미다.
 
@@ -3020,7 +2984,7 @@ new Vue({
 
   사용했는데도 현재 애플리케이션은 마치 웹팩으로 빌드한 결과물을 정상적으로 실행하고 있는 것처럼 동작한다.
 
-  <img src="./img/86.png" align="left">
+  ![](./img/86.png) 
 
   왼쪽 그림을 보면 "npm run dev" 명령어로 프로젝트를 실행했을 때 프로젝트 구조에 /dist/라는 폴더는 존재하지 않는다.
 
@@ -3028,7 +2992,7 @@ new Vue({
 
   만들지 않아도 "npm run dev" 명령어를 실행했을 때 마치 웹팩으로 빌드한 것 같은 효과를 얻게 된다는 것을 알 수 있다.
 
-  <img src="./img/87.png" align="left">
+  ![](./img/87.png) 
 
   
 
