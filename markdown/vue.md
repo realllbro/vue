@@ -2884,7 +2884,379 @@
 
   
 
+  # 5.실전 애플리케이션 만들기
+
+## 5-1.할 일 관리 앱 살펴보기
+
+* 브라우저 저장소의 종류
+
+  브라우저 저장소에는 로컬 스토리지, 세션 스토리지(Session Storage), 인덱스드 디비(IndexedDB)등 여러 가지가 있다.
+
+  여기서는 가장 간단하게 사용할 수 있는 로컬 스토리지를 활용하자. 로컬 스토리지와 세션 스토리지에 대해 더 알고 싶다면 
+
+  https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API 를 참고하자.
+
   
+
+## 5-1.프로젝트 생성하고 구조 확인하기
+
+### 5-1-1.뷰 CLI를 이용한 프로젝트 생성
+
+* 원하는 위치에 새로운 폴더 vue-todo를 생성하고 vue-todo 폴더 내에서 명령 프롬프트 창을 연다.
+
+  명령 프롬프트 창에 아래와 같이 vue init webpack-simple 을 입력하고 실행한다.
+
+  ![](./img/111.png) 
+
+  위 그림은 doit 이라는 폴더 위치에서 vue-todo라는 폴더를 새로 생성하고, vue-todo 폴더로 
+
+  가서 webpack-simple 프로젝트를 생성하는 과정을 보여주는 화면이다.
+
+  현재 디렉터리에 프로젝트 생성, 프로젝트 이름, 프로젝트 정보, 저자, 라이센스, Sass 사용 여부를 모두 설정하고
+
+  npm install 명령어를 입력하면 package.json파일(npm 설정 파일)에 등록된 자바스크립트 라이브러리를 모두 다운로드 한다.
+
+  설치를 완료한 후 npm run dev를 실행하여 애플리케이션이 정상적으로 실행되는지 확인하자.
+
+### 5-1-2.프로젝트 초기 설정
+
+* ##### 반응형 웹 디자인 태그 설정
+
+  반응형 웹 디자인(Responsive Web Design)은 하나의 웹 사이트로 PC, 모바일, 태블릿 등 어느 기기에서도 깨지지 않는
+
+  자연스러운 레이아웃을 제공하는 웹 디자인 방법이다. 여기서 제작할 실전 애플리케이션은 모바일 웹 기준으로 설계할 것이므로
+
+  모바일 웹에서도 레이아웃이 잘 조정될 수 있게 설정해 줘야 한다.
+
+  
+
+  그럼 index.html 파일의 &lt;head> 태그에 아래와 같이 &lt;meta> 태그를 추가한다. (viewport 메타 태그 추가)
+
+  ```html
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <titlle>Vue.js Todo</titlle>
+  </head>
+  ```
+
+  이렇게 viewport 메타 태그를 추가하면 PC 웹 화면뿐만 아니라 모바일 웹에서도 레이아웃이 깨지지 않고 잘 보인다.
+
+  여기서 사용한 width=device-width 속성은 기기의 너비만큼 웹 페이지의 너비를 지정하라는 의미다.
+
+  그리고 initial-scale=1.0 은 페이지의 배율로, 페이지가 로딩되었을 때 줌(zoom) 레벨을 의미한다.
+
+  
+
+* ##### 어썸 아이콘 CSS 설정
+
+  애플리케이션의 예쁜 UI를 위해 버튼은 일반 문자열 대신 어썸 아이콘(Awesome Icon)을 활용하자.
+
+  어썸 아이콘은 구글의 머터리얼(Material) 아이콘 보다 더 많은 종류를 제공하며 대중적으로 사용되는 아이콘 CSS다.
+
+  어썸 아이콘을 사용하려면 다음과 같이 &lt;head>태그에 &lt;link> 태그를 추가한다. (폰트 어썸 아이콘 CSS를 추가)
+
+  ```html
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <titlle>Vue.js Todo</titlle>
+  </head>
+  ```
+
+  링크 태그는 검색 엔진에서 검색해서 복사, 붙여 넣기하는 것이 편리하다.
+
+  font awesome cdn 이라고 검색하고 사이트에 접속해서 &lt;link> 태그를 가져오자.
+
+  ```html
+  참고 : 폰트 어썸 아이콘 공식 사이트는 http://fontawesome.io/get-started/ 다.
+  ```
+
+  
+
+* ##### 폰트와 파비콘 설정
+
+  애플리케이션에서 사용할 폰트(font)와 파비콘(favicon)을 설정한다. (구글 폰트와 파비콘을 추가)
+
+  ```html
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">    
+      
+  	<link rel="shortcut icon"  href="src/assets/favicon.ico" type="image/x-icon">
+  	<link rel="icon" 		   href="src/assets/favicon.ico" type="image/x-icon">    
+      <link href="https://fonts.googleapis.com/css2?family=Ubuntu" rel="stylesheet">    
+      
+      <titlle>Vue.js Todo</titlle>
+  </head>
+  ```
+
+  검색 엔진에서 favicon generator 를 검색하면 나오는 사이트에 접속한 후 사이트의 안내에 따라 
+
+  assets 폴더 밑의 logo.png 파일을 파비콘 파일로 변환하자.
+
+  google font ubuntu를 검색하여 위 &lt;link>를 복사해서 붙여 넣자.
+
+## 5-3.컴포넌트 생성하고 등록하기
+
+### 5-3-1.컴포넌트 생성
+
+* 프로젝트 폴더에서 src 폴더 밑에 components 폴더를 생성하고 그 아래에 
+
+  TodoHeader.vue, TodoInput.vue, TodoList.vue, TodoFooter.vue를 생성하자.
+
+  컴포넌트 같은 경우에는 관례상 src/components 폴더에서 관리를 한다. 
+
+  ![](./img/112.png) 
+
+  > * ##### 애플리케이션 규모가 커질 경우에는 컴포넌트를 어떻게 관리해야 할까?
+  >
+  >   애플리케이션의 규모가 커서 기능별로 관리를 해야 할 경우에는 'components/기능/컴포넌트.vue'와 같은
+  >
+  >   형식으로 관리하는 게 좋다. 예를 들어, 로그인 페이지를 만들 때 로그인 페이지와 관련된 컴포넌트
+  >
+  >   components/login/LoginForm.vue 와 components/login/LoginSNS.vue 와 같은 형식으로 관리하면
+  >
+  >   컴포넌트를 기능별로 더 쉽게 관리할 수 있다.
+  >
+  >    ![](./img/113.png) 
+>
+  
+그럼 각 컴포넌트를 한눈에 구분할 수 있도록 아래와 같이 간단한 코드를 삽입하자.
+  
+* ##### TodoHeader.vue
+  
+  ```html
+    <template>
+        <div>header</div>
+    </template>
+    
+    <script>
+        export default {
+            
+        }
+    </script>
+    
+    <style>
+    </style>
+    ```
+  
+  
+  
+* ##### TodoInput.vue
+  
+  ```html
+    <template>
+        <div>input</div>
+    </template>
+    
+    <script>
+        export default {
+            
+        }
+    </script>
+    
+    <style>
+    </style>
+    ```
+  
+  
+  
+* ##### TodoList.vue
+  
+  ```html
+    <template>
+        <div>list</div>
+    </template>
+    
+    <script>
+        export default {
+            
+        }
+    </script>
+    
+    <style>
+    </style>
+    ```
+  
+  
+  
+* ##### TodoFooter.vue
+  
+  ```html
+    <template>
+        <div>footer</div>
+    </template>
+    
+    <script>
+        export default {
+            
+        }
+    </script>
+    
+    <style>
+    </style>
+    ```
+  
+
+  
+.vue 파일의 기본 구조에서 <template> 영역에 <div> 태그를 추가하고 컴포넌트 이름을 텍스트로 삽입했다.
+  
+이렇게 하면 컴포넌트를 등록했을 때 다른 컴포넌트와의 구분이 쉬워진다.
+  
+```html
+  참고 : vue 확장자를 가진 파일에서 template를 입력한 후 [tab]을 누르면 자동으로 컴포넌트 코드 구조가 생성된다.
+  ```
+  
+
+
+### 5-3-2.컴포넌트 등록
+
+* 앞에서 생성한 4개의 컴포넌트를 등록하여 화면에 나타내 보자.
+
+  애플리케이션에서 사용할 컴포넌트는 모두 최상위 컴포넌트인 App.vue에 등록하자.
+
+  src/App.vue의 기존 코드 내용을 모두 지우고 아래 코드만 남기자.
+
+  ```html
+  <template>
+      <div id="app"></div>
+  </template>
+  
+  <script>
+      export default {
+          
+      }
+  </script>
+  
+  <style>
+  </style>
+  ```
+
+  지역 컴포넌트 등록 방법은 다음과 같다.
+
+  ```js
+  components : {
+  	'컴포넌트 이름' : 컴포넌트 내용
+  }
+  ```
+
+  이 지역 컴포넌트 등록 형식을 App.vue 파일에 적용하면 다음과 같다.
+
+  ```html
+  <script>
+      export default {
+          components:{
+              'TodoHeader' : TodoHeader,
+              'TodoInput'  : TodoInput,
+              'TodoList'   : TodoList,
+              'TodoFooter' : TodoFooter            
+          }
+      }
+  </script>      
+  ```
+
+  이렇게 했을 때 과연 TodoHeader.vue, TodoInput.vue, TodoList.vue, TodoFooter.vue 내용을 올바르게 인식할 수 있을까?
+
+  App.vue 파일에서 TodoHeader.vue를 비롯해 4개의 컴포넌트 파일 내용을 불러오는 코드를 추가하지 않아 인식 할 수 없다.
+
+  
+
+  싱글 파일 컴포넌트 체계(.vue 파일 체계)에서는 특정 컴포넌트에서 다른 위치에 있는 컴포넌트의 내용을 불러올 때 아래 형식을 사용한다.
+
+  (컴포넌트 내용을 불러오기 위한 ES6 import 구문)
+
+  ```js
+  import 불러온 파일의 내용이 담길 객체 from '불러올 파일 위치';
+  ```
+
+  
+
+  App.vue 파일에서 다른 컴포넌트의 내용을 import from 구문으로 다 받아와서 components 속성에 연결해 주기만 하면 된다.
+
+  (import 구문으로 컴포넌트 내용을 불러와서 등록하는 코드)
+
+  ```html
+  <script>
+  	import TodoHeader from './components/TodoHeader.vue'
+  	import TodoInput  from './components/TodoInput.vue'
+  	import TodoList   from './components/TodoList.vue'
+  	import TodoFooter from './components/TodoFooter.vue'
+  </script>      
+  ```
+
+	>  * ##### 컴포넌트 내용을 불러올 때 ES5문법과 ES6문법의 차이
+	>
+	>    바로 이전 코드는 앞에서 살펴본 지역 컴포넌트 등록 코드와 비슷한 개념이고 단지 문법의 차이만 있다.
+	>
+	>    TodoHeader 컴포넌트 등록 부분에만 ES5 문법을 적용해 보면 아래와 같다.
+	>
+	>    ```html
+	>    <script>
+	>        //컴포넌트 내용
+	>        var TodoHeader = {
+	>            template : '<div>header</div>'
+	>        };
+	>              
+	>        export default{
+	>            components:{
+	>                //컴포넌트 이름 : 컴포넌트 내용
+	>                'TodoHeader' : TodoHeader
+	>            }
+	>        }
+	>    </script>
+	>    ```
+	>
+	>    
+	>
+	>    위 코드와 ES6 코드의 차이점은 import 구문으로 컴포넌트의 내용을 불러와 담고 넘겨 주느냐, 
+	>
+	>    var로 선언한 객체에 컴포넌트의 내용을 담아 넘겨 주느냐의 차이다.
+	>
+	>    ![](./img/114.png)  
+  
+  컴포넌트 등록을 완료했으니 마지막으로 컴포넌트 태그 4개를 App.vue의 &lt;div id="app"> 태그 안에 추가 하자.
+  
+  ```html
+  <template>
+      <div id="app">
+          <TodoHeader></TodoHeader>
+          <TodoInput></TodoInput>
+          <TodoList></TodoList>
+          <TodoFooter></TodoFooter>
+      </div>
+  </template>
+  ```
+  
+  이렇게 추가한 후 파일을 저장한다. 명령 프롬프트에서 npm run dev를 이용해 서버를 실행시키면 아래와 같은
+  
+  화면이 나온다. 만약 이미 서버가 실행 중이라면 변경된 코드를 저장했을 때 자동으로 화면이 새로 고침된다.
+  
+  ![](./img/115.png) 
+  
+  개발자 도구를 열어 뷰 개발자 도구를 확인하면 App라는 최상위 컴포넌트 아래에 
+  
+  TodoHeader, TodoInput, TodoList, TodoFooter 가 각각 하위 컴포넌트로 생성된 것을 확인할 수 있다.
+
+## 5-4.컴포넌트 내용 구현하기
+
+
+
+## 5-5.기존 애플리케이션 구조의 문제점 해결하기
+
+
+
+## 5-6.더 나은 사용자 경험을 위한 기능 추가하기
+
+
+
+
+
+
+
+
 
 # 6.Vue.js 고급 개발자 되기
 
@@ -2894,7 +3266,7 @@
 
   뷰 CLI로 생성한 프로젝트에서 사용하는 웹팩 데브 서버와 웹팩 설정 파일(webpack.config.js)에 대해 살펴 보자.
 
-### 6-2-1 웹팩이란?
+### 6-2-1.웹팩이란?
 
 * 웹팩은 흔히 모듈 번들라라고 알려져 있다. 공식 홈페이지에서도 다음처럼 모듈 번들러라고 부르고 있다.
 
@@ -3447,6 +3819,95 @@
 
 
 ### 6-4-3.전역 설치와 지역 설치
+
+* -global 옵션은 해당 라이브러리를 시스템 레벨에 설치하는 옵션이다. 
+
+  방금 전에 살펴본 --save와 --save-dev 옵션은 해당 프로젝트에 라이브러리 파일을 다운로드 한다.
+
+  만약 옵션 없이 npm install 명령어만 입력해도 동일하게 해당 프로젝트에 라이브러리 파일을 다운로드 할 수 있다.
+
+  이처럼 -global 옵션을 이용해 시스템 레벨에 설치하는 것을 전역 설치 --save, --save-dev 같이 해당 프로젝트에 
+
+  설치하는 것을 지역 설치라고 한다.
+
+  
+
+  아래 그림은 새 폴더를 하나 생성한 후 앞에서 사용했던 webpack-simple 프로젝트의 package.json 파일을 복사해온 폴더 구조다.
+
+  ![](./img/106.png) 
+
+  위 폴더 위치에서 명령 프롬프트 창을 열고 npm install webpack-g 명령어를 입력한다.
+
+  ```html
+  -g는 -global 옵션의 약어다. install 명령어 역시 i로 줄일 수 있다. 
+  ex) npm i webpack -g
+  ```
+
+  ![](./img/107.png) 
+
+  설치는 제대로 되었는데 새로 생성한 현재 폴더에는 아무것도 추가되지 않았다.
+
+  왜냐하면 라이브러리를 현재 폴더 위차가 아닌 전역(시스템 레벨)에 설치 했기 때문이다.
+
+  
+
+  그럼 이번에는 다음과 같이 npm install webpack 명령어를 입력한다.
+
+  ![](./img/108.png) 
+
+  라이브러리를 설치했다는 메시지와 함께 폴더 구조를 살펴보면 다음과 같이 node_modules 폴더가 추가된 것을
+
+  확인할 수 있다. node_modules 폴더를 열어보면 아래에 웹팩과 관련된 라이브러리 파일들이 설치되어 있다.
+
+  ![](./img/109.png) 
+
+  
+
+### 6-4-4.NPM 커스텀 명령어
+
+* 뷰 CLI로 구성한 프로젝트를 실행할 때 npm run build와 npm run dev 명령어를 사용했다.
+
+  npm run build 명령어는 웹팩으로 프로젝트를 빌드할 때 사용했고, 
+
+  npm run dev 명령어는 프로젝트를 웹팩 데브 서버로 구동할 때 사용했다.
+
+  이 명령어들은 어디에서 나온건지 아래 코드를 살펴 보자.
+
+  ![](./img/110.png) 
+
+  위 코드는 npm 설정 파일(package.json)의 scripts 속성 코드다. dev 속성과 build 속성을 보면 
+
+  여러가지 옵션 값이 들어가 있는 걸 알 수 있다. 
+
+  dev 속성은 웹팩 데브 서버를 실행하는 명령어와 함께 --open과 같은 추가 옵션들을 줬고, 
+
+  build 속성은 웹팩 빌드를 실행하는 명령어와 함께 --progress와 같은 추가 옵션들을 줬다.
+
+  이 dev 속성과 build 속성이 npm run으로 명령어를 실행할 때의 대상 속성이다. 따라서 명령 프롬프트 창에
+
+  npm run dev 명령어를 입력하면 webpack-dev-server --open --hot 명령어를 입력한 것과 같은 효과를 얻을 수 있다.
+
+  
+
+  이와 같은 방식으로 npm 설정 파일의 scripts 속성에 원하는 명령어를 추가하고, 해당 명령어를 실행했을 때 
+
+  동작하는 옵션들을 정의할 수 있다. 이렇게 매번 긴 명령어를 입력하지 않고 'npm run 명령어' 형식으로 간다한게 
+
+  입력해서 실행할 수 있다. 프로젝트가 커지고 웹팩 설정 파일이 복잡해 지면 scripts 속성 안에 명령어를 추가해서 사용해 보자.
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
 
 
 
