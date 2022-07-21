@@ -2690,13 +2690,13 @@
 
   브라우저파이도 웹팩과 유사한 성격의 모듈 번들러지만 웹팩과 다르게 웹 자원 압축이나 빌드 자동화 같은 기능은 없다.
 
-  ```js
-  웹팩과 브라우저리파이에 대해 더 궁금하다면?
-  웹팩 공식 사이트 : https://webpack.js.org/
-  웹팩 한글 강의   : https://www.inflearn.com/course/webpack-웹팩-강좌/
-  브라우저리파이 공식 사이트 : http://browserify.org/
-  모듈번들러 : 서로 의존 관계가 있는 모듈을 하나의 파일로 묶어 주는 도구
-  ```
+  >##### 웹팩과 브라우저리파이에 대해 더 궁금하다면?
+  >
+  >웹팩 공식 사이트 : https://webpack.js.org/
+  >웹팩 한글 강의   : https://www.inflearn.com/course/webpack-웹팩-강좌/
+  >
+  >브라우저리파이 공식 사이트 : http://browserify.org/
+  >모듈번들러 : 서로 의존 관계가 있는 모듈을 하나의 파일로 묶어 주는 도구
 
   뷰 개발자들이 편하게 프로젝트를 구성할 수 있도록 뷰 코어 팀에서 CLI(Command Line Interface) 도구를 제공한다.
 
@@ -3022,10 +3022,11 @@
   >   컴포넌트를 기능별로 더 쉽게 관리할 수 있다.
   >
   >    ![](./img/113.png) 
->
-  
+
+
+
 그럼 각 컴포넌트를 한눈에 구분할 수 있도록 아래와 같이 간단한 코드를 삽입하자.
-  
+
 * ##### TodoHeader.vue
   
   ```html
@@ -3041,7 +3042,7 @@
     
     <style>
     </style>
-    ```
+  ```
   
   
   
@@ -3060,7 +3061,7 @@
     
     <style>
     </style>
-    ```
+  ```
   
   
   
@@ -3079,7 +3080,7 @@
     
     <style>
     </style>
-    ```
+  ```
   
   
   
@@ -3098,18 +3099,19 @@
     
     <style>
     </style>
-    ```
-  
-
-  
-.vue 파일의 기본 구조에서 <template> 영역에 <div> 태그를 추가하고 컴포넌트 이름을 텍스트로 삽입했다.
-  
-이렇게 하면 컴포넌트를 등록했을 때 다른 컴포넌트와의 구분이 쉬워진다.
-  
-```html
-  참고 : vue 확장자를 가진 파일에서 template를 입력한 후 [tab]을 누르면 자동으로 컴포넌트 코드 구조가 생성된다.
   ```
   
+  
+  
+
+.vue 파일의 기본 구조에서 <template> 영역에 <div> 태그를 추가하고 컴포넌트 이름을 텍스트로 삽입했다.
+
+이렇게 하면 컴포넌트를 등록했을 때 다른 컴포넌트와의 구분이 쉬워진다.
+
+```html
+  참고 : vue 확장자를 가진 파일에서 template를 입력한 후 [tab]을 누르면 자동으로 컴포넌트 코드 구조가 생성된다.
+```
+
 
 
 ### 5-3-2.컴포넌트 등록
@@ -3199,7 +3201,7 @@
 	>        var TodoHeader = {
 	>            template : '<div>header</div>'
 	>        };
-	>              
+	>                
 	>        export default{
 	>            components:{
 	>                //컴포넌트 이름 : 컴포넌트 내용
@@ -3241,6 +3243,357 @@
   TodoHeader, TodoInput, TodoList, TodoFooter 가 각각 하위 컴포넌트로 생성된 것을 확인할 수 있다.
 
 ## 5-4.컴포넌트 내용 구현하기
+
+* 컴포넌트별로 구현할 기능은 아래와 같다.
+  * TodoHeader : 애플리케이션 이름 표시
+  * TodoInput  : 할 일 입력 및 추가
+  * TodoList   : 할 일 목록 표시 및 특정 할 일 삭제
+  * TodoFooter : 할 일 모두 삭제
+
+### 5-4-1.애플리케이션 제목을 보여주는 TodoHeader 컴포넌트
+
+* #### 애플리케이션 제목 추가하기
+
+  &lt;div> 태그를 삭제하고 &lt;header>와 &lt;h1> 태그를 활용하자.
+
+  ```html
+  <template>
+      <header>
+          <h1>TODO it!</h1>
+      </header>
+  </template>
+  ```
+
+* #### CSS로 제목 꾸미기
+
+  제목의 스타일링을 위해 최상위 컴포넌트인 App.vue와 TodoHeader.vue에 다음과 같이 CSS를 추가하자.
+
+  * App.vue
+
+    ```html
+    <style>
+        body {
+            text-align:center;
+            background-color:#F6F6F8;
+        }
+        input {
+            border-style:groove;
+            width:200px;
+        }
+        button {
+            border-style:groove;
+        }
+        .shadow {
+            box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03)
+        }    
+    </style>
+    ```
+
+  * TodoHeader.vue
+
+    ```html
+    <style scoped>
+        h1 {
+            color:#2F3B52;
+            font-weight:900;
+            margin:2.5rem 0 1.5rem;
+        }   
+    </style>
+    ```
+
+  App.vue와 TodoHeader.vue에 추가한 스타일의 역할은 각각 다음과 같다.
+
+  | 컴포넌트       | CSS 속성         | 설명                                                         |
+  | -------------- | ---------------- | ------------------------------------------------------------ |
+  | App.vue        | background-color | 애플리케이션 전체의 배경 색을 꾸미기 위해 지정               |
+  | App.vue        | text-align       | 애플리케이션 전체에서 사용하는 텍스트의 정렬 방식을 선택     |
+  | App.vue        | border-style     | 할 일을 입력하는 인풋 박스의 테두리 모양을 정의              |
+  | App.vue        | box-shadow       | 할 일을 입력하는 인풋 박스와 할 일 아이템의 아래 그림자 정의 |
+  | TodoHeader.vue | color            | 애플리케이션 제목의 텍스트 색깍을 지정                       |
+  | TodoHeader.vue | font-weight      | 애플리케이션 제목의 텍스트 굵기를 지정                       |
+  | TodoHeader.vue | margin           | 애플리케이션 제목의 텍스트 여백을 지정                       |
+
+  그리고 &lt;style> 태그에 사용된 scoped는 뷰에서 지원하는 속성이며, 스타일 정의를 해당 컴포넌트에만
+
+  적용하겠다는 의미다.
+
+  
+
+* #### npm run dev 실행결과
+
+  ![](./img/116.png) 
+
+
+
+### 5-4-2.할 일을 입력하는 TodoInput 컴포넌트
+
+* #### 인풋 박스와 버튼 추가하기 
+
+  먼저 텍스트 값을 입력받기 위한 &lt;input> 태그와 텍스트 값을 저장하기 위한 &lt;button> 태그를 추가하자.
+
+  &lt;button> 태그의 이름은 '추가'로 지정하자. 태그를 추가하면 화면에서 input 텍스트가 있던 자리에 
+
+  인풋 박스와 버튼이 생긴다. 인풋 박스에 텍스트를 입력했을 때 뷰 인스턴스에서 텍스트 값을 인식할 수 있게
+
+  v-model 디렉티브와 데이터 속성 newTodoItem을 다음과 같이 추가하자.
+
+  (TodoInput.vue)
+
+  ```html
+  <template>
+      <div>
+          <input type="text" v-model="newTodoItem">
+          <button>추가</button>
+      </div>
+  </template>
+  
+  <script>
+      export default{
+          data(){
+              return{
+                  newTodoItem : ''
+              }
+          }
+      }
+  </script>
+  ```
+
+  코드를 저장하고 다시 애플리케이션을 실행한 후 뷰 개발자 도구를 열자.
+
+  뷰 개발자 도구에서 'Components' 탭의 &lt;App> 아래 있는 &lt;TodoInput> 부분을 클릭하면 newTodoItem의 값이 ''로 
+
+  되어 있다. 이제 인풋 박스에 Hello라는 텍스트를 입력하면서 newTodoItem의 값을 지켜보면 텍스트를 입력함에 따라
+
+  newTodoItem의 값도 같이 갱신되는 것을 확인 할 수 있다.
+
+  ![](./img/117.png) 
+
+
+
+* #### 텍스트를 저장하기 위한 버튼 이벤트 추가하기
+
+  인풋 박스에 입력한 텍스트 값을 뷰에서 인식할 수 있게 됐다. 이제 입력한 텍스트 값을 데이터 저장소인
+
+  로컬 스토리지에 저장하기만 하면 된다. [추가] 버튼을 클릭했을 때 특정 동작을 수행할 수 있게 v-on:click에 
+
+  버튼 이벤트 addTodo를 지정한다. 그리고 버튼 이벤트 addTodo()의 로직은 methods에 정의 한다.
+
+  (TodoInput.vue)
+
+  ```html
+  <template>
+      <div>
+          <input type="text" v-model="newTodoItem">
+          <button v-on:click="addTodo">추가</button>
+      </div>
+  </template>
+  
+  <script>
+      export default{
+          data(){
+              return{
+                  newTodoItem : ''
+              }
+          },
+          methods:{
+              addTodo(){
+                  console.log(this.newTodoItem);
+              }
+          }
+      }
+  </script>
+  ```
+
+  
+
+  버튼이 정상적으로 동작하는지 확인하기 위해 인풋 박스에 입력된 텍스트 데이터(newTodoItem)를 console.log()로 
+
+  출력해 보자. 인풋 박스에 Do it을 입력하고 [추가] 버튼을 클릭하면 다음과 같이 콘솔에 텍스트 값이 표시된다.
+
+  ```html
+  참고 : 여기서 사용한 this.newTodoItem의 this는 해당 컴포넌트를 가리킨다.
+  ```
+
+  
+
+  ![](./img/118.png) 
+
+  이와 같이 [추가] 버튼을 클릭했을 때 버튼 이벤트가 정상적으로 동작하는 것을 확인할 수 있다.
+
+  
+
+* #### 입력받은 텍스트를 로컬 스토리지에 저장하기
+
+  버튼 이벤트가 제대로 동작하는 것을 확인했으니 확인용으로 작성한 console.log(this.newTodoItem); 은 삭제한다.
+
+  그리고 입력받은 텍스트를 로컬 스토리지의 setItem() API를 이용하여 저장한다. 
+
+  setItem()는 로컬 스토리지에 데이터를 추가하는 API 다. 
+
+  API형식은 키, 값 형태이며 저장 기능을 최대한 단순하게 하기 위해 키, 값 도무 입력받은 텍스트로 지정한다.
+
+  (TodoInput.vue)
+
+  ```js
+  methods : {
+      addTodo() {
+          localStorage.setItem(this.newTodoItem, this.newTodoItem);
+      }
+  }
+  ```
+
+  
+
+  methods의 내용을 위와 같이 변경하고 저장한다. 그리고 나서 인풋 박스에 Do it을 입력하고 [추가] 버튼을 클릭하면
+
+  로컬 스토리지에 텍스트 값이 저장된다. 로컬 스토리지에 저장된 것을 확인하려면 크롬 개발자 도구의
+
+  [Application -> Local Storage -> http://localhost:8080]를 클릭해 확인하자.
+
+  다음과 같이 텍스트 값이 올바르게 저장된 것을 확인할 수 있다.
+
+  ![](./img/119.png) 
+
+* #### addTodo() 안에 예외 처리 코드 넣기
+
+  인풋 박스에 입력된 텍스트가 없을 경우 로컬 스토리지에 데이터가 저장되지 않게 예외 처리 코드를 추가해 보자.
+
+  ![](./img/120.png) 
+
+  변경 전의 addTodo()는 로컬 스토리지로 데이터를 저장하는 코드만 있어서 인풋 박스에 텍스트를 입력하지 않은 
+
+  상태에서 [추가] 버튼을 클릭하면 빈 데이터가 로컬 스토리지에 저장되는 문제가 생긴다.
+
+  여기서 this.clearInput()을 보면 아래의 clearInput() 메서드를 호출하고 있다는 것을 알 수 있다.
+
+  addTodo() 메서드 안에서 this를 사용하면 해당 컴포넌트(여기서는 App)를 가리킨다.
+
+  clearInput() 메서드는 App 컴포넌트에 정의되어 있으므로 addTodo() 에서 this를 사용하면 
+
+  clearInput() 메서드에 접근할 수 있다. 
+
+  data 속성에 정의한 newTodoItem을 addTodo()에서 this.newTodoItem 으로 접근한 것과 같은 원리다.
+
+  > ##### 디자인 패턴 : 단일 책임 원칙
+  >
+  > 단일 책임 원칙(Single Responsibility Principle) 이란 함수 하나가 하나의 기능만 담당하도록 설계하는
+  >
+  > 객체 지향 프로그래밍의 디자인 패턴이다. clearInput()의 this.newTodoItem = ''; 코드를 그냥 addTodo()
+  >
+  > 메서드에 넣어도 되지만 단일 책임 원칙에 따라 할 일 텍스트를 저장하는 코드는 addTodo()에 넣고, 인풋 박스의
+  >
+  > 내용을 비우는 코드는 clearInput()에 넣었다. 만약 다른 메서드에서 인풋 박스의 내용을 비우는 코드가 필요할 경우
+  >
+  > this.newTodoItem = ''; 코드 대신에 this.clearInput();을 호출하면 된다.
+  >
+  > 더 자세한 내용은 https://en.wikipedia.org/wiki/Single_responsibility_principle 을 참고하자.
+
+  (코드)
+
+  ```js
+  methods:{
+      addTodo(){
+        if(this.newTodoItem !== ""){
+          var value = this.newTodoItem && this.newTodoItem.trim();
+          localStorage.setItem(value, value);  
+          this.clearInput();
+        }
+      },
+      clearInput(){
+        this.newTodoItem = '';
+      }
+  }
+  ```
+
+  
+
+* #### 아이콘 이용해 직관적인 버튼 모양 만들기
+
+  어썸 아이콘을 이용해 더 직관적인 버튼 모양을 만들 수 있다.
+
+  &lt;template> 태그에 기존 &lt;button> 태그를 삭제하고 &lt;span>, &lt;i> 태그를 아래와 같이 추가하자.
+
+  ![](./img/121.png) 
+
+  &lt;template> 변경 내용은 다음과 같다.
+
+  1. placeholder : 인풋 박스의 힌트 속성
+  2. v-on:keyup.enter : 인풋 박스에서 "Enter" 를 눌렀을 때 동작하는 속성
+  3. &lt;span> : &lt;button> 대신 클릭 이벤트를 받을 태그
+  4. &lt;i class="fa fa-plus"> : 어썸 아이콘의 "+" 아이콘을 추가
+
+  
+
+  (코드)
+
+  ```html
+  <template>
+      <div class="inputBox shadow">
+          <input type="text" v-model="newTodoItem" placeholder="Type what you have to do" v-on:keyup.enter="addTodo">
+          <span class="addContainer" v-on:click="addTodo">
+          	<i class="addBtn fa fa-plus" aria-hidden="true"></i>
+          </span>
+      </div>
+  </template>
+  ```
+
+  
+
+  TodoInput 컴포넌트의 CSS 코드를 다음처럼 수정하자.
+
+  ```html
+  <style scoped>
+      input:focus{
+          outline:none;
+      }
+      .inputBox{
+          background:white;
+          height: 50px;
+          line-height:50px;
+          border-style:none;
+          font-size:0.9rem;
+      }
+      .inputBox input{
+          border-style:none;
+          font-size:0.9rem;
+      }
+      .addContainer{
+          float:right;
+          background: linear-gradient(to right, #6478FB, #8763FB);
+          display: inline-block;
+          width:3rem;
+          border-radius:0 5px 5px 0;
+      }
+      .addBtn{
+          color:white;
+          vertical-align:middle;
+      }
+  </style>
+  ```
+
+  &lt;style> 변경 내용은 다음과 같다.
+
+  | CSS 속성       | 설명                                                |
+  | -------------- | --------------------------------------------------- |
+  | outline        | 할 일을 입력하는 인풋 박스의 선 스타일 지정         |
+  | background     | 인풋 박스의 배경색 지정                             |
+  | height         | 인풋 박스의 높이 설정                               |
+  | line-height    | 인풋 박스에 입력되는 텍스트의 중앙 정렬을 위해 설정 |
+  | border-radius  | 인풋 박스의 둥근 테두리 속성 설정                   |
+  | float          | 할 일 추가 버튼이 표시될 위치 정의                  |
+  | vertical-align | 할 일 추가 아이콘의 수직 정렬 정의                  |
+
+  실행결과
+
+  ![](./img/122.png) 
+
+
+
+### 5-4-3.저장된 할 일 목록을 표시하는 TodoList 컴포넌트
+
+
+
+
 
 
 
